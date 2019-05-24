@@ -72,14 +72,22 @@ namespace Online_Book_Store.BookStore.Controllers
             {
                 return NotFound();
             }
-            var entity = await _addBook.GetBookAsync(id.Value);         
-
+            var entity = await _addBook.GetBookAsync(id.Value);
+            var viewBook = new ViewBook {
+                Id=entity.Id,
+                Author=entity.Author,
+                Name=entity.Name,
+                Popular=entity.Popular,
+                Price=entity.Price,
+                CategoryName=entity.CategoryName,
+                Publish=entity.Publish
+            };
             if (entity == null)
             {
                 return NotFound();
             }
 
-            return View(entity);
+            return View(viewBook);
         }
         // GET: Books/Create
         public  IActionResult Create()
