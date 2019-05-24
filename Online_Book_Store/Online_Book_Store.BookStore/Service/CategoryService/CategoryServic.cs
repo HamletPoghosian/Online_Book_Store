@@ -1,4 +1,5 @@
-﻿using Online_Book_Store.BookStore.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Online_Book_Store.BookStore.Data;
 using Online_Book_Store.BookStore.Service.CategoryService;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Online_Book_Store.BookStore.Service.Category
 {
-    public  class CategoryServic:ICategoryService
+    public class CategoryServic : ICategoryService
     {
         private readonly ApplicationDbContext _context;
         public CategoryServic(ApplicationDbContext context)
@@ -15,39 +16,80 @@ namespace Online_Book_Store.BookStore.Service.Category
             _context = context;
         }
 
-        public Task<Data.Category> AddItemsAsync(Data.Category category)
+        public async Task<Data.Category> AddItemsAsync(Data.Category category)
         {
-            throw new NotImplementedException();
+            var entity = new Data.Category
+            {
+                Id = category.Id,
+                Name = category.Name,
+                Discription = category.Discription
+            };
+            await _context.Categorys.AddAsync(entity);
+            await _context.SaveChangesAsync();
+            category.Id = entity.Id;
+            return (category);
         }
 
-        public Task DeleteAsync(Data.Category category)
+        public async Task DeleteAsync(Data.Category category)
         {
-            throw new NotImplementedException();
+           var catDb = _context.Categorys.SingleOrDefaultAsync(c => c.Id == category.Id);
+            _context.Remove(catDb);
+            await _context.SaveChangesAsync();
         }
 
-        public Task EditAsync(Data.Category category)
+        public async Task EditAsync(Data.Category category)
         {
-            throw new NotImplementedException();
+            var entity = await _context.Categorys.SingleOrDefaultAsync(e => e.Id == category.Id);
+            entity.Id = category.Id;
+            entity.Name = category.Name;
+            entity.Discription = category.Discription;
+            _context.Categorys.Update(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<Book> GetCategoryAsync(Guid categoryId)
+        public async Task<IEnumerable<Data.Category>> GetCategorysAsync()
         {
-            throw new NotImplementedException();
+            var query = _context.Categorys.AsQueryable();
+            var entity = await query.ToListAsync();
+            return entity.Select(p => new Data.Category
+            {
+                Id = p.Id,               
+                Name = p.Name,
+                Discription=p.Discription    
+            });
         }
 
-        public Task<List<string>> GetCategoryDescription()
+        public async Task<Data.Category> GetCategoryAsync(Guid categoryId)
         {
-            throw new NotImplementedException();
+            var entity = await _context.Categorys.SingleOrDefaultAsync(e => e.Id == categoryId);
+            return new Data.Category
+            {
+                Id = entity.Id,                
+                Name = entity.Name,
+                Discription=entity.Discription
+            };
         }
 
-        public Task<List<string>> GetCategoryName()
+        public  List<string> GetCategoryDescription()
         {
-            throw new NotImplementedException();
+            var query = _context.Categorys.AsQueryable();
+            var listDesc =  query.Select(e => e.Discription).ToList();
+            return (listDesc);
         }
 
-        public Task<IEnumerable<Data.Category>> GetCategorysAsync()
+        public List<string> GetCategoryName()
         {
-            throw new NotImplementedException();
+            var query = _context.Categorys.AsQueryable();
+            var listName = query.Select(e => e.Name).ToList();
+            return (listName);
         }
+        public IEnumerable<Data.Category> GetCategory()
+        {
+            var query = _context.Categorys;
+
+            return query;
+        }
+
+
     }
 }

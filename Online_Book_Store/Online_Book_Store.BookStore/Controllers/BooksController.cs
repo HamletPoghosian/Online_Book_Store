@@ -7,27 +7,29 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Online_Book_Store.BookStore.Data;
-using Online_Book_Store.BookStore.Service.Category;
+using Online_Book_Store.BookStore.Models.CategoryViewModel;
+using Online_Book_Store.BookStore.Service.CategoryService;
 
 namespace Online_Book_Store.BookStore.Controllers
 {
     public class BooksController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly IBookService _addbook;
-        private CategoryServic _category;
-        public BooksController(ApplicationDbContext context,IBookService addbook)
+        private readonly IBookService _addBook;
+        private readonly ICategoryService _addCategory;
+
+        public BooksController(ApplicationDbContext context,IBookService addbook,ICategoryService category)
         {
             _context = context;
-            _addbook = addbook;
+            _addBook = addbook;
+            _addCategory = category;
         }
 
         // GET: Books
         public async Task<IActionResult> Index()
         {
-          
-             
-            return View(await _addbook.GetBooksAsync());
+            var applicationDbContext = _context.Books.Include(b => b.Category);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Books/Details/5
@@ -50,11 +52,9 @@ namespace Online_Book_Store.BookStore.Controllers
         }
 
         // GET: Books/Create
-        public IActionResult Create()
+        public  IActionResult Create()
         {
-            // ViewData["CategoryName"] = new SelectList(_context.Categorys, "Name");
-            
-
+            GetCategoryDropDown();
             return View();
         }
 
@@ -68,11 +68,10 @@ namespace Online_Book_Store.BookStore.Controllers
             if (ModelState.IsValid)
             {
                 book.Id = Guid.NewGuid();
-                _context.Add(book);
-                await _context.SaveChangesAsync();
+                await _addBook.AddItemsAsync(book);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categorys, "Id", "Id", book.CategoryId);
+            GetCategoryDropDown();
             return View(book);
         }
 
@@ -162,6 +161,18 @@ namespace Online_Book_Store.BookStore.Controllers
         private bool BookExists(Guid id)
         {
             return _context.Books.Any(e => e.Id == id);
+        }
+         
+        private void GetCategoryDropDown()
+        {
+            var categories = _addCategory.GetCategory().Select(category => new CategoryDropDown
+            {
+                Id = category.Id,
+                Name = category.Name,
+                Description = category.Discription
+
+            });
+            ViewData["CategoryName"] = new SelectList(categories, "Id", "Name");
         }
     }
 }

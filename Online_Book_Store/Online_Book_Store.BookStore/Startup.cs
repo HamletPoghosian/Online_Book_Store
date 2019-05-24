@@ -13,6 +13,7 @@ using Online_Book_Store.BookStore.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using BookStoreOnline.Service;
+using Online_Book_Store.BookStore.Service.Category;
 
 namespace Online_Book_Store.BookStore
 {
@@ -41,6 +42,7 @@ namespace Online_Book_Store.BookStore
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddBook();
+            services.AddCategory();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             
         }
