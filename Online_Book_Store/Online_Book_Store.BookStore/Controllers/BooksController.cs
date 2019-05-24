@@ -68,11 +68,14 @@ namespace Online_Book_Store.BookStore.Controllers
         }
         public async Task<IActionResult> GetBook(Guid? id)
         {
+
             if (id == null)
             {
                 return NotFound();
             }
+
             var entity = await _addBook.GetBookAsync(id.Value);
+
             var viewBook = new ViewBook {
                 Id=entity.Id,
                 Author=entity.Author,
@@ -82,6 +85,7 @@ namespace Online_Book_Store.BookStore.Controllers
                 CategoryName=entity.CategoryName,
                 Publish=entity.Publish
             };
+
             if (entity == null)
             {
                 return NotFound();
@@ -106,10 +110,13 @@ namespace Online_Book_Store.BookStore.Controllers
             if (ModelState.IsValid)
             {
                 book.Id = Guid.NewGuid();
+
                 await _addBook.AddItemsAsync(book);
+
                 return RedirectToAction(nameof(Index));
             }
             GetCategoryDropDown();
+
             return View(book);
         }
 
@@ -122,11 +129,14 @@ namespace Online_Book_Store.BookStore.Controllers
             }
 
             var book = await _context.Books.FindAsync(id);
+
             if (book == null)
             {
                 return NotFound();
             }
+
             ViewData["CategoryId"] = new SelectList(_context.Categorys, "Id", "Id", book.CategoryId);
+
             return View(book);
         }
 
@@ -147,6 +157,7 @@ namespace Online_Book_Store.BookStore.Controllers
                 try
                 {
                     _context.Update(book);
+
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -175,8 +186,11 @@ namespace Online_Book_Store.BookStore.Controllers
             }
 
             var book = await _context.Books
+
                 .Include(b => b.Category)
+
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (book == null)
             {
                 return NotFound();
@@ -191,8 +205,11 @@ namespace Online_Book_Store.BookStore.Controllers
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
             var book = await _context.Books.FindAsync(id);
+
             _context.Books.Remove(book);
+
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -210,6 +227,7 @@ namespace Online_Book_Store.BookStore.Controllers
                 Description = category.Discription
 
             });
+
             ViewData["CategoryName"] = new SelectList(categories, "Id", "Name");
         }
     }
