@@ -50,7 +50,7 @@ namespace Online_Book_Store.BookStore.Controllers
         // GET: Books/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categorys, "Id", "Id");
+            ViewData["CategoryName"] = new SelectList(_context.Categorys, "Name");
             return View();
         }
 
