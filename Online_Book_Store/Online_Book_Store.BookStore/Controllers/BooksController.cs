@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Online_Book_Store.BookStore.Data;
+using Online_Book_Store.BookStore.Service.Category;
 
 namespace Online_Book_Store.BookStore.Controllers
 {
@@ -14,6 +15,7 @@ namespace Online_Book_Store.BookStore.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IBookService _addbook;
+        private CategoryServic _category;
         public BooksController(ApplicationDbContext context,IBookService addbook)
         {
             _context = context;
@@ -50,7 +52,9 @@ namespace Online_Book_Store.BookStore.Controllers
         // GET: Books/Create
         public IActionResult Create()
         {
-            ViewData["CategoryName"] = new SelectList(_context.Categorys, "Name");
+            // ViewData["CategoryName"] = new SelectList(_context.Categorys, "Name");
+            
+
             return View();
         }
 
