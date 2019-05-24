@@ -25,7 +25,8 @@ namespace Book_Store.Service
                 Author = book.Author,
                 Name = book.Name,
                 Popular = book.Popular,
-                Price = book.Price
+                Price = book.Price,
+                CategoryId = book.CategoryId
             };
             await _context.Books.AddAsync(entity);
             await _context.SaveChangesAsync();
@@ -57,21 +58,23 @@ namespace Book_Store.Service
 
         public async Task<Book> GetBookAsync(Guid bookId)
         {
-            var entity = await _context.Books.SingleOrDefaultAsync(e => e.Id == bookId);
+            var entity = await _context.Books.Include(b => b.Category).SingleOrDefaultAsync(e => e.Id == bookId);
             return new Book
             {
                 Id = entity.Id,
                 Author = entity.Author,
                 Name = entity.Name,
                 Popular = entity.Popular,
-                Price = entity.Price
+                Price = entity.Price,
+                CategoryName = entity.Category.Name
             };
 
         }
 
         public async Task<IEnumerable<Book>> GetBooksAsync()
+
         {
-            var query = _context.Books.AsQueryable();
+            var query = _context.Books.Include(b => b.Category).AsQueryable();
             var entity = await query.ToListAsync();
             return entity.Select(p => new Book
             {
@@ -80,7 +83,7 @@ namespace Book_Store.Service
                 Name = p.Name,
                 Popular = p.Popular,
                 Price = p.Price,
-                CategoryId = p.CategoryId
+                Category= p.Category
             });
 
         }

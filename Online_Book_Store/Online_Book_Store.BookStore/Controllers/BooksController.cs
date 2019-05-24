@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookStoreOnline.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,17 +13,19 @@ namespace Online_Book_Store.BookStore.Controllers
     public class BooksController : Controller
     {
         private readonly ApplicationDbContext _context;
-
-        public BooksController(ApplicationDbContext context)
+        private readonly IBookService _addbook;
+        public BooksController(ApplicationDbContext context,IBookService addbook)
         {
             _context = context;
+            _addbook = addbook;
         }
 
         // GET: Books
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Books.Include(b => b.Category);
-            return View(await applicationDbContext.ToListAsync());
+          
+             
+            return View(await _addbook.GetBooksAsync());
         }
 
         // GET: Books/Details/5
