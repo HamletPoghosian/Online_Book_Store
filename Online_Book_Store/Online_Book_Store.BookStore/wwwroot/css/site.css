@@ -5,8 +5,21 @@ body {
     padding-bottom: 20px;
 }
 
+.container {
+    width: 90%;
+}
+
+.navbar navbar-inverse navbar-fixed-top {
+    display: flex;
+}
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
+#myCarousel {
+    height: 500px;
+    overflow: hidden;
+    margin-bottom: 10px
+}
+
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
@@ -19,10 +32,386 @@ body {
 }
 
 /* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
+.carousel-inner .item img {
+    width: max-content;
+    margin: auto;
 }
 
+.cart {
+    float: right;
+    width: 40px;
+}
+
+.rowbook {
+    display: flex;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.childrow1 {
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+    margin: 5px;
+    text-align: center;
+    font-size: 30px;
+    background-color: #4c4c4c;
+    transition: width 0.5s, height 0.5s;
+    outline: 1px solid #000000;
+}
+
+a {
+    text-decoration-color: red;
+}
+
+.childrow1:hover {
+    background-color: #1c1d1f;
+    margin: 5px;
+    text-align: center;
+    outline-style: solid;
+    outline-color: #086d5f;
+    text-decoration: none;
+}
+
+.prow {
+    font-family: Arial;
+    color: azure;
+    line-height: normal;
+    text-align: unset;
+    font-size: 20px;
+}
+
+
+
+.pupliarBook .popH {
+    font-size: 30px;
+    color: black;
+    font-family: Lora,serif;
+    text-align: center;
+}
+
+.poptext {
+    background-color: #f1f0f0;
+    outline-style: outset;
+}
+
+    .poptext:hover {
+        background-color: #a5a0a0;
+    }
+
+.pupliarBook .popL {
+    font-size: 20px;
+    font-family: Lora,serif;
+    text-align: center;
+}
+
+.pimage {
+    width: 50px;
+    height: 50px;
+    flex-wrap: wrap;
+    display: flex;
+    font-size: 20px;
+}
+
+.pimagesize {
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+}
+
+.imagehr {
+    width: 80%;
+    height: 1px;
+    background-color: azure;
+}
+
+.SeePopBook {
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: black;
+}
+
+.seepopbookp {
+    color: azure;
+    text-align: center;
+    font-size: 40px;
+}
+
+.sectiondiv1 {
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #c0c3c3;
+    width: -webkit-fill-available;
+    height: auto;
+}
+
+.sectionimage {
+    display: flex;
+    width: 100%;
+    padding: 12px;
+    height: 100%;
+    -webkit-transition: width 1s;
+}
+
+    .sectionimage:hover {
+        width: 103%;
+        height: 103%;
+    }
+
+.section1 {
+    display: flex;
+}
+
+.sectionA {
+    width: calc(50% - 0px);
+    text-decoration: none;
+    font-size: 25px;
+    outline: 3px solid azure;
+    background-color: #2f6f61;
+}
+
+.sectionAParagraf {
+    text-align: -webkit-center;
+    color: aliceblue;
+}
+
+.sectionA:visited {
+    text-decoration: none;
+}
+
+.sectionA:hover {
+    text-decoration: none;
+    background-color: #1c443b;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.control-label {
+    background-color: #eb8585;
+    color: black;
+    font-size: 25px;
+    display: flex;
+}
+
+.imgcircle {
+    width: 100%;
+    height: 500px;
+    display: flex;
+}
+
+.img-circlechildren {
+    width: 100%;
+    height: 500px;
+    height: auto;
+}
+
+.readbook {
+    width: 250px;
+    height: auto;
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.imagecicelP {
+    text-align: center;
+    font-size: 20px;
+}
+
+.imagecicrlelongP {
+    text-align: center;
+    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.imagehrforcicel {
+    width: 80%;
+    height: 2px;
+    background-color: #2f6f61;
+}
+
+.star {
+    font-size: 120%;
+    color: goldenrod;
+}
+
+.bookshow {
+    width: 100%;
+    height: 500px;
+    display: flex;
+}
+
+.bookimage {
+    width: 50%;
+    height: auto;
+}
+
+.showbookimg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    height: auto;
+}
+
+.bookshowvalue {
+    margin-left: 50px;
+}
+
+.bookname {
+    font-size: 50px;
+    font-family: "TheMix_500",Helvetica,Arial,sans-serif;
+    color: goldenrod;
+}
+
+.bookautor {
+    font-size: 25px;
+}
+
+.bookdate {
+    font-size: 15px;
+}
+
+.bookprise {
+    width: max-content;
+    font-size: 35px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    outline: solid;
+    outline-color: goldenrod;
+}
+
+.topbookshow {
+    width: 100%;
+    height: 30px;
+    background-color: darkgray;
+    margin-bottom: 10px;
+}
+
+.starshowbook {
+    color: goldenrod;
+    font-size: 50px;
+}
+
+.showbookbutton {
+    background-color: #555555;
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    outline: solid;
+    outline-color: #555555;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    margin: 4px 2px;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+    .showbookbutton:hover {
+        background-color: goldenrod;
+        border: none;
+        color: black;
+        padding: 10px 30px;
+        text-align: center;
+        outline: solid;
+        outline-color: goldenrod;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 25px;
+        margin: 4px 2px;
+        cursor: pointer;
+        margin-bottom: 8px;
+    }
+
+.showbookbutton1 {
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    outline: solid;
+    outline-color: goldenrod;
+    font-size: 25px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+    .showbookbutton1:hover {
+        background-color: goldenrod;
+        border: none;
+        color: white;
+        padding: 10px 30px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        outline: solid;
+        outline-color: goldenrod;
+        font-size: 25px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+.prowPrice {
+    width: max-content;
+    background-color: goldenrod;
+    margin-left: auto;
+    font-size: 25px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: black;
+}
+
+.Insert-Page-Image-book img {
+    display: flex;
+}
+
+.Insert-Page-Image-book {
+    display: flex;
+    justify-content: center;
+}
+
+.Button {
+    font-size: 15px;
+    color: #086d5f;
+    height: 50px;
+}
+
+.navbar-inverse {
+    background-color: black;
+    font-size: 20px;
+}
+
+
+    .navbar-inverse .navbar-nav > li > a:hover {
+        background-color: #085046;
+    }
+
+    .navbar-inverse .navbar-brand {
+        color: aliceblue;
+        background-color: #daa521;
+        font-size: 30px;
+    }
+
+        .navbar-inverse .navbar-brand:hover {
+            background-color: black;
+            font-style: italic;
+            font-size: 30px;
+        }
+
+Button:hover {
+    color: #336600;
+    padding: 0.2em 1.45em;
+}
 /* QR code generator */
 #qrCode {
     margin: 15px;

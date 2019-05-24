@@ -1,66 +1,239 @@
-﻿@model IEnumerable<Online_Book_Store.BookStore.Data.Book>
-
+﻿@model IEnumerable<ViewBook>
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Book Page";
 }
 
-<h2>Index</h2>
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="http://www.gifgifachance.com/uploads/6/5/9/4/65943003/open-book-mockup-2_orig.gif" alt="Book" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+                <p>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Author)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Popular)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Publish)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Popular)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Publish)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="https://i.pinimg.com/originals/4f/8f/48/4f8f4849d7ca6c6d81964c3c61f9d085.gif" alt="Book" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+                <p>
+
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="https://cdn-images-1.medium.com/max/1600/1*i9PIjZY88ipG3B7RAztsGQ.gif" alt="Book" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+                <p>
+
+                </p>
+            </div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div class="SeePopBook">
+    <p class="seepopbookp">
+        See Our Top Popular Books
+    </p>
+</div>
+
+
+
+<div class="rowbook">
+
+
+    @foreach (var item in Model.Skip(0).Take(4))
+    {
+
+        {
+            <div class="childrow1">
+                <div>
+                    <div>
+                        <a class="childrow1a" asp-controller="Books" asp-action="GetBook" asp-route-Id="@item.Id">
+                            <p class="prow">
+
+                                @item.Name
+                            </p>
+                            <p class="prow">
+                                @item.Author
+                            </p>
+                            <p class="prowPrice">
+                                @item.Price <span>&#1423;</span>
+                            </p>
+
+                            <p class="prow">
+                                @{
+                                    for (int j = 0; j < item.Popular; j++)
+                                    {
+                                        <span class="star">&#9733;</span>
+                                    }
+                                }
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+
+    }
+</div>
+<div class="rowbook">
+
+
+    @foreach (var item in Model.Skip(4).Take(10))
+    {
+
+        {
+            <div class="childrow1">
+                <div>
+                    <div>
+                        <a class="childrow1a" asp-controller="Books" asp-action="GetBook" asp-route-Id="@item.Id">
+                            <p class="prow">
+
+                                @item.Name
+                            </p>
+                            <p class="prow">
+                                @item.Author
+                            </p>
+                            <p class="prowPrice">
+                                @item.Price <span>&#1423;</span>
+                            </p>
+
+                            <p class="prow">
+                                @{
+                                    for (int j = 0; j < item.Popular; j++)
+                                    {
+                                        <span class="star">&#9733;</span>
+                                    }
+                                }
+                            </p>
+                            <p class="prow">
+
+                                @item.CategoryName
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+
+    }
+</div>
+
+<div class="SeePopBook">
+    <p class="seepopbookp">
+        Buy Our Top Popular Books
+    </p>
+</div>
+
+<section class="section1">
+    <div class="sectionimage">
+        <img class="sectionimage" src="https://cdn.dribbble.com/users/434649/screenshots/1936140/linum-gif.gif" alt="Alternate Text" />
+
+    </div>
+
+    <div class="sectiondiv1">
+        <a class="sectionA" href="#">
+            <p class="sectionAParagraf">
+                One Hundred Years of Solitude
+                <hr class="imagehr">
+                <div class="pimage">
+                    <img class="pimagesize" src="https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/1411/9780141184999.jpg" alt="" />
+                </div>
+            </p>
+        </a>
+        <a class="sectionA" href="#">
+            <p class="sectionAParagraf">
+                Love in the Time of Cholera
+                <hr class="imagehr">
+                <div class="pimage">
+                    <img class="pimagesize" src="https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/1411/9780141189208.jpg" alt="" />
+                </div>
+            </p>
+        </a>
+        <a class="sectionA" href="#">
+            <p class="sectionAParagraf">
+                The House Of The Spirits
+                <hr class="imagehr">
+                <div class="pimage">
+                    <img class="pimagesize" src="https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/0995/9780099528562.jpg" alt="" />
+
+                </div>
+
+            </p>
+        </a>
+        <a class="sectionA" href="#">
+            <p class="sectionAParagraf">
+                Identity Crisis Of Ben Elton
+                <hr class="imagehr">
+                <div class="pimage">
+                    <img class="pimagesize" src="https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/5930/9780593073599.jpg" alt="" />
+                </div>
+
+            </p>
+        </a>
+    </div>
+
+
+</section>
+
+<div class="SeePopBook">
+    <p class="seepopbookp">
+        Buy Our Top Popular Books
+    </p>
+</div>
+
+<div class="imgcircle">
+    <div class="img-circlechildren">
+        <img class="readbook" src="https://www.norwegian.com/globalassets/ip/media/front/upsell/norwegian-dreamliner-premium-360-video.jpg" alt="readbook" />
+        <p class="imagecicelP">
+            Try before you fly<br>
+            Make Time Fly When You Fly
+            <hr class="imagehrforcicel">
+        </p>
+        <p class="imagecicrlelongP">
+            Fairy tales are more than true: not because they tell us that dragons exist, but because they tell us that dragons can be beaten
+        </p>
+    </div>
+    <div class="img-circlechildren">
+        <img class="readbook" src="http://image.cccdddd.com/big/7/book-icon-red-background-vector-6743.jpg" alt="readbook" />
+        <p class="imagecicelP">
+            Try before you fly <br>
+            Make Time Fly When You Fly
+            <hr class="imagehrforcicel">
+        </p>
+        <p class="imagecicrlelongP">
+            If you only read the books that everyone else is reading, you can only think what everyone else is thinking
+        </p>
+    </div>
+    <div class="img-circlechildren">
+        <img class="readbook" src="https://covers.audiobooks.com/images/covers/full/9781518990038.jpg" alt="readbook" />
+        <p class="imagecicelP">
+            Try before you fly<br>
+            Make Time Fly When You Fly
+            <hr class="imagehrforcicel">
+        </p>
+        <p class="imagecicrlelongP">
+            Never trust anyone who has not brought a book with them.
+        </p>
+    </div>
+</div>

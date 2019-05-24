@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Online_Book_Store.BookStore.Data;
+using Online_Book_Store.BookStore.Models;
 using Online_Book_Store.BookStore.Models.CategoryViewModel;
 using Online_Book_Store.BookStore.Service.CategoryService;
 
@@ -28,8 +29,20 @@ namespace Online_Book_Store.BookStore.Controllers
         // GET: Books
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Books.Include(b => b.Category);
-            return View(await applicationDbContext.ToListAsync());
+            var entity = await _addBook.GetBooksAsync();
+            
+           
+            return View(entity.Select(book=>new ViewBook
+            {
+                Id=book.Id,
+                Name=book.Name,
+                Author=book.Author,
+                CategoryName=book.CategoryName,
+                Popular=book.Popular,
+                Price=book.Price,
+                Publish=book.Publish
+
+            }));
         }
 
         // GET: Books/Details/5
@@ -39,18 +52,35 @@ namespace Online_Book_Store.BookStore.Controllers
             {
                 return NotFound();
             }
-
-            var book = await _context.Books
-                .Include(b => b.Category)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (book == null)
+            var entity = await _addBook.GetBookAsync(id.Value);
+            
+            await _addBook.EditAsync(entity);
+                
+            //var book = await _context.Books
+            //    .Include(b => b.Category)
+            //    .FirstOrDefaultAsync(m => m.Id == id);
+            if (entity == null)
             {
                 return NotFound();
             }
 
-            return View(book);
+            return View(entity);
         }
+        public async Task<IActionResult> GetBook(Guid? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var entity = await _addBook.GetBookAsync(id.Value);         
 
+            if (entity == null)
+            {
+                return NotFound();
+            }
+
+            return View(entity);
+        }
         // GET: Books/Create
         public  IActionResult Create()
         {
