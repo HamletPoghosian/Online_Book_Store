@@ -1,4 +1,4 @@
-﻿@model ViewBook
+﻿@model Online_Book_Store.BookStore.Data.Book
 
 @{
     ViewData["Title"] = "Details";
@@ -6,53 +6,50 @@
 }
 
 <h2>Details</h2>
-<div class="topbookshow">
 
-</div>
-<div class="bookshow">
-
-    <div class="bookimage">
-        <img class="showbookimg" src="https://www.iasbee.com/wp-content/uploads/2019/03/book_preloader.gif" alt="Text" />
-    </div>
-    <div class="bookshowvalue ">
-        <p class="bookname">
+<div>
+    <h4>Book</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
             @Html.DisplayFor(model => model.Name)
-        </p>
-        <p class=" bookautor">
-            by @Html.DisplayFor(model => model.Author)
-        </p>
-        <p class="bookdate">
-            ISBN: 9780525539643
-            <br>
-            SKU: 11255563
-            <br>
-
-        </p>
-        <p class=" bookprise">
-
-            <span>&euro;</span>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Popular)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Popular)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
             @Html.DisplayFor(model => model.Price)
-        </p>
-        <p class="bookpopular">
-            @for (int i = 0; i < Model.Popular; i++)
-            {
-                <span class="starshowbook">&#9733;</span>
-            }
-
-        </p>
-        <p class="bookname">
-            @Html.DisplayFor(model => model.CategoryName)
-        </p>
-        <p class="bookname">
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Publish)
+        </dt>
+        <dd>
             @Html.DisplayFor(model => model.Publish)
-        </p>
-        <button class="showbookbutton">Buy</button>
-        <br>
-        <button asp-action="AddCart" asp-controller="Books" asp-route-Id="@Model.Id" class="showbookbutton1">Add to Cart</button>
-    </div>
-
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Category.Id)
+        </dd>
+    </dl>
 </div>
 <div>
-
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
