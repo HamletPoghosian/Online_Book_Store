@@ -55,7 +55,7 @@ body {
 .childrow1 {
     justify-content: center;
     width: 100%;
-    height: 300px;
+    height: 350px;
     margin: 20px;
     text-align: center;
     font-size: 4px;
@@ -70,13 +70,13 @@ a {
 .childrow1:hover {
     background-color: #fceccf;
     
-    outline: 3px solid #eaaf1b;
+    outline: 2px solid #eaaf1b;
    
     text-decoration: none;
 }
 
 .prow {
-    font-family: Arial;
+   font-family: 'Muli', sans-serif;    
     color: black;
     line-height: normal;
     text-align: unset;
@@ -236,7 +236,8 @@ a:hover {
 }
 
 .star {
-    font-size: 120%;
+    text-align:end;
+    font-size: 200%;
     color: goldenrod;
 }
 
