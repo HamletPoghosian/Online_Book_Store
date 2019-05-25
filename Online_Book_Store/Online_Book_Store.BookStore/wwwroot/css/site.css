@@ -55,13 +55,12 @@ body {
 .childrow1 {
     justify-content: center;
     width: 100%;
-    height: 200px;
-    margin: 5px;
+    height: 300px;
+    margin: 20px;
     text-align: center;
-    font-size: 30px;
-    background-color: #4c4c4c;
-    transition: width 0.5s, height 0.5s;
-    outline: 1px solid #000000;
+    font-size: 4px;
+    background-color: #ffffff;
+    outline: 1px solid #bdbbbb;
 }
 
 a {
@@ -69,17 +68,16 @@ a {
 }
 
 .childrow1:hover {
-    background-color: #1c1d1f;
-    margin: 5px;
-    text-align: center;
-    outline-style: solid;
-    outline-color: #086d5f;
+    background-color: #fceccf;
+    
+    outline: 3px solid #eaaf1b;
+   
     text-decoration: none;
 }
 
 .prow {
     font-family: Arial;
-    color: azure;
+    color: black;
     line-height: normal;
     text-align: unset;
     font-size: 20px;
@@ -170,12 +168,13 @@ a {
     text-decoration: none;
     font-size: 25px;
     outline: 3px solid azure;
-    background-color: #2f6f61;
+    color:dimgray;
+    background-color: #c0c3c3;
 }
 
 .sectionAParagraf {
     text-align: -webkit-center;
-    color: aliceblue;
+    color: black;
 }
 
 .sectionA:visited {
@@ -184,7 +183,7 @@ a {
 
 .sectionA:hover {
     text-decoration: none;
-    background-color: #1c443b;
+    background-color: #ffcc71;
 }
 
 a:hover {
