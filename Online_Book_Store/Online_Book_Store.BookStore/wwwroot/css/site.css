@@ -428,20 +428,22 @@ a:hover {
     font-size: 20px;
 }
 
-
-    .navbar-inverse .navbar-nav > li > a:hover {
-        background-color: #085046;
-    }
+.navbar-brand {
+    font-size: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.navbar-inverse .navbar-nav > li > a:hover {
+    background-color: #13140e;
+}
 
     .navbar-inverse .navbar-brand {
         color: aliceblue;
-        background-color: #daa521;
-        font-size: 30px;
+       
     }
 
         .navbar-inverse .navbar-brand:hover {
             background-color: black;
-            font-style: italic;
+            font-family: "TheMix_500",Helvetica,Arial,sans-serif;
             font-size: 30px;
         }
 
