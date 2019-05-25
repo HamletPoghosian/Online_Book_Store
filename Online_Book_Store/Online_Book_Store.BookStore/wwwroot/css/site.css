@@ -82,7 +82,13 @@ a {
     text-align: unset;
     font-size: 20px;
 }
-
+.prowCategory {
+    font-family: 'Julius Sans One', sans-serif;
+    color: black;
+    line-height: normal;
+    text-align: unset;
+    font-size: 30px;
+}
 
 
 .prowName {
