@@ -152,20 +152,18 @@ a {
 
 .sectionimage {
     display: flex;
-    width: 100%;
-    padding: 12px;
+    width: 100%;    
     height: 100%;
-    -webkit-transition: width 1s;
+    
 }
-
     .sectionimage:hover {
-        width: 103%;
-        height: 103%;
+    background-color:#ffcc71;
+    opacity:0.5;
     }
 
-.section1 {
-    display: flex;
-}
+    .section1 {
+        display: flex;
+    }
 
 .sectionA {
     width: calc(50% - 0px);
@@ -267,7 +265,7 @@ a:hover {
 }
 
 .bookname {
-    font-size: 50px;
+    font-size: 40px;
     font-family: "TheMix_500",Helvetica,Arial,sans-serif;
     color: goldenrod;
 }
@@ -275,7 +273,12 @@ a:hover {
 .bookautor {
     font-size: 25px;
 }
-
+.bookCategory {
+    font-size: 25px;
+}
+.bookPublish {
+    font-size: 25px;
+}
 .bookdate {
     font-size: 15px;
 }
@@ -297,8 +300,29 @@ a:hover {
 
 .starshowbook {
     color: goldenrod;
-    font-size: 50px;
+    font-size: 40px;
 }
+.twoBook {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 700px;
+    margin: 1px;
+    
+    
+}
+.twoBookone {
+    border: 1px solid #a5a0a0;
+    justify-content: center;
+    width: 50%;
+    height: 99%;
+    margin: 5px;
+    text-align: center;
+    font-size: 30px; 
+   
+    
+}
+
 
 .showbookbutton {
     background-color: #555555;
