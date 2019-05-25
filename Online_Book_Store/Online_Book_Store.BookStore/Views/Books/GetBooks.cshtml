@@ -1,4 +1,4 @@
-﻿@model  Online_Book_Store.BookStore.Models.ViewBook
+﻿@model Online_Book_Store.BookStore.Models.ViewBook
 
 @{
     ViewData["Title"] = "Details";
@@ -36,7 +36,7 @@
         <p class="bookpopular">
             @for (int i = 0; i < Model.Popular; i++)
             {
-            <span class="starshowbook">&#9733;</span>
+                <span class="starshowbook">&#9733;</span>
             }
 
         </p>
@@ -48,7 +48,7 @@
         </p>
         <button class="showbookbutton">Buy</button>
         <br>
-        <button asp-action="AddCart" asp-controller="Books" asp-route-Id="@Model.Id" class="showbookbutton1">Add to Cart</button>
+        <a asp-action="AddToCart" asp-controller="ShopingCarts" asp-route-Id="@Model.Id"  class="showbookbutton1">Add to Cart</a>
     </div>
 
 </div>

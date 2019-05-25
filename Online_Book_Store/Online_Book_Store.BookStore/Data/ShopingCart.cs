@@ -9,6 +9,7 @@ namespace Online_Book_Store.BookStore.Data
     {
         public Guid Id { get; set; }
         public Guid ApplicationUserId { get; set; }
+        public Guid BookId { get; set; }
         public Book Book { get; set; }
         public int Amount { get; set; }
     }

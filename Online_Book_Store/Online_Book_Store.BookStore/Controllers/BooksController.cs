@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BookStoreOnline.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -66,7 +67,7 @@ namespace Online_Book_Store.BookStore.Controllers
 
             return View(entity);
         }
-        public async Task<IActionResult> GetBook(Guid? id)
+        public async Task<IActionResult> GetBooks(Guid? id)
         {
 
             if (id == null)
@@ -93,6 +94,7 @@ namespace Online_Book_Store.BookStore.Controllers
 
             return View(viewBook);
         }
+       
         // GET: Books/Create
         public  IActionResult Create()
         {

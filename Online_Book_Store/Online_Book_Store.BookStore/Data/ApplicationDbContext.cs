@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Online_Book_Store.BookStore.Models;
 
 namespace Online_Book_Store.BookStore.Data
 {
@@ -23,5 +24,7 @@ namespace Online_Book_Store.BookStore.Data
         {
             base.OnModelCreating(builder);
         }
+
+        public DbSet<Online_Book_Store.BookStore.Models.ViewBook> ViewBook { get; set; }
     }
 }

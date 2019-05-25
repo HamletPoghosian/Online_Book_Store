@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,10 +13,12 @@ namespace Online_Book_Store.BookStore.Controllers
 {
     public class ShopingCartsController : Controller
     {
+        private readonly UserManager<ApplicationUser> _manager;
         private readonly ApplicationDbContext _context;
 
-        public ShopingCartsController(ApplicationDbContext context)
+        public ShopingCartsController(ApplicationDbContext context, UserManager<ApplicationUser> manager)
         {
+            _manager = manager;
             _context = context;
         }
 
@@ -148,6 +152,37 @@ namespace Online_Book_Store.BookStore.Controllers
         private bool ShopingCartExists(Guid id)
         {
             return _context.ShopingCarts.Any(e => e.Id == id);
+        }
+
+
+        [Authorize]
+        public async Task<IActionResult> AddToCart(Guid? id, int amount)
+        {
+          
+        ShopingCart shopingCart = new ShopingCart();
+            if (id == null)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                var user = await GetCurrentUser();               
+                
+                shopingCart.Id = Guid.NewGuid();
+                shopingCart.ApplicationUserId = Guid.Parse(user.Id);
+                shopingCart.BookId= id.Value;
+                shopingCart.Amount = amount;
+                _context.Add(shopingCart);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+
+
+            return View();
+        }
+        private async Task<ApplicationUser> GetCurrentUser()
+        {
+            return await _manager.GetUserAsync(HttpContext.User);
         }
     }
 }
