@@ -76,7 +76,7 @@ a {
 }
 
 .prow {
-   font-family: 'Muli', sans-serif;    
+    font-family: Arial;
     color: black;
     line-height: normal;
     text-align: unset;
@@ -85,6 +85,13 @@ a {
 
 
 
+.prowName {
+    font-family: 'Cinzel Decorative', cursive;
+    color: black;
+    line-height: normal;
+    text-align: unset;
+    font-size: 30px;
+}
 .pupliarBook .popH {
     font-size: 30px;
     color: black;
