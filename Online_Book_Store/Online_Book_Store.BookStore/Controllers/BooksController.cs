@@ -38,7 +38,7 @@ namespace Online_Book_Store.BookStore.Controllers
                 Id=book.Id,
                 Name=book.Name,
                 Author=book.Author,
-                CategoryName=book.CategoryName,
+                CategoryName=book.Category.Name,
                 Popular=book.Popular,
                 Price=book.Price,
                 Publish=book.Publish

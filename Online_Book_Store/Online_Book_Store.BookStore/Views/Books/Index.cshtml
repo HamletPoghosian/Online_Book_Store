@@ -90,6 +90,10 @@
                                     }
                                 }
                             </p>
+                            <p class="prow">
+
+                                @item.CategoryName
+                            </p>
                         </a>
                     </div>
                 </div>
@@ -103,7 +107,51 @@
 <div class="rowbook">
 
 
-    @foreach (var item in Model.Skip(4).Take(10))
+    @foreach (var item in Model.Skip(4).Take(5))
+    {
+
+        {
+            <div class="childrow1">
+                <div>
+                    <div>
+                        <a class="childrow1a" asp-controller="Books" asp-action="GetBooks" asp-route-Id="@item.Id">
+                            <p class="prowName">
+
+                                @item.Name
+                            </p>
+                            <p class="prow">
+                                @item.Author
+                            </p>
+                            <p class="prowPrice">
+                                @item.Price <span>&#1423;</span>
+                            </p>
+
+                            <p class="prow">
+                                @{
+                                    for (int j = 0; j < item.Popular; j++)
+                                    {
+                                        <span class="star">&#9733;</span>
+                                    }
+                                }
+                            </p>
+                            <p class="prow">
+
+                                @item.CategoryName
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+
+    }
+</div>
+<div class="rowbook">
+
+
+    @foreach (var item in Model.Skip(9).Take(3))
     {
 
         {
