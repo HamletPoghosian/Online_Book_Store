@@ -23,29 +23,28 @@
         <p class="prow">
             @Html.DisplayFor(modelItem => item.Book.Author)
         </p>
-        
+
         <p class="prow">
             @Html.DisplayFor(modelItem => item.Book.Price)
         </p>
         <p class="prow">
             @Html.DisplayFor(modelItem => item.Amount)
         </p>
-        <p class="prowPrice">
-            @Html.DisplayFor(modelItem => item.TotalPrice)
+        <p class="prowPriceTotal">
+           Total Price @Html.DisplayFor(modelItem => item.TotalPrice)
         </p>
-       
+
         <p class="prow">
             @Html.DisplayFor(modelItem => item.Book.CategoryName)
         </p>
-
+        <button class="showbookbutton">Buy</button>
 
 
 
 
         <td>
             <p class="prow">
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>              
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </p>
         </td>
