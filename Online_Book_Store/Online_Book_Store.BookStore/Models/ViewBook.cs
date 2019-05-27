@@ -12,6 +12,7 @@ namespace Online_Book_Store.BookStore.Models
         public string Author { get; set; }
         public double Popular { get; set; }
         public double Price { get; set; }
+        public int Amount { get; set; }
         public DateTime Publish { get; set; }
         public Guid CategoryId { get; set; }      
         public string CategoryName { get; set; }

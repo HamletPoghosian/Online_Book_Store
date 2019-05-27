@@ -408,6 +408,14 @@ a:hover {
     color: black;
 }
 
+.Shopingcart {
+width:30px;
+height:30px;
+display:flex;
+
+}
+
+
 .Insert-Page-Image-book img {
     display: flex;
 }
