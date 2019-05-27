@@ -49,7 +49,7 @@
             <p class="bookPublish">
                 @Html.DisplayFor(model => model.Publish)
             </p>
-            <input asp-for="Amount" type="number" name="amount" value="1" />
+            <input  min="1"  asp-for="Amount" type="number" name="amount" value="1" />
             <input asp-for="Id" type="hidden"  />
             <br>
             <button class="showbookbutton">Buy</button>

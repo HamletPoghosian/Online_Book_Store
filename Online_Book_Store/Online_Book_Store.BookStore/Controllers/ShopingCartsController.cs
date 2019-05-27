@@ -33,9 +33,11 @@ namespace Online_Book_Store.BookStore.Controllers
 
              
             return View(shopincCartitems.Select(e=>new ShopingCartModel {
+                Id=e.Id,
                 Amount=e.Amount,
                 Book=new ViewBook
                 {
+                    Id=e.Book.Id,
                     Name=e.Book.Name,
                     Author=e.Book.Author,
                     Popular=e.Book.Popular,
