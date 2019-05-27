@@ -14,43 +14,52 @@
     <div class="bookimage">
         <img class="showbookimg" src="https://www.iasbee.com/wp-content/uploads/2019/03/book_preloader.gif" alt="Text" />
     </div>
-    <div class="bookshowvalue ">
-        <p class="bookname">
-            @Html.DisplayFor(model => model.Name)
-        </p>
-        <p class=" bookautor">
-            by @Html.DisplayFor(model => model.Author)
-        </p>
-        <p class="bookdate">
-            ISBN: 9780525539643
+    <form  asp-action="AddToCart" asp-controller="ShopingCarts" method="post">
+        <div class="bookshowvalue ">
+            <p class="bookname">
+                @Html.DisplayFor(model => model.Name)
+            </p>
+            <p class=" bookautor">
+                by @Html.DisplayFor(model => model.Author)
+            </p>
+            <p class="bookdate">
+                ISBN: 9780525539643
+                <br>
+                SKU: 11255563
+                <br>
+
+            </p>
+            <p class=" bookprise">
+
+                <span>&euro;</span>
+                @Html.DisplayFor(model => model.Price)
+            </p>
+
+
+            <p class="bookpopular">
+                @for (int i = 0; i < Model.Popular; i++)
+                {
+                    <span class="starshowbook">&#9733;</span>
+                }
+
+            </p>
+            <p class="bookCategory">
+                @Html.DisplayFor(model => model.CategoryName)
+            </p>
+            <p class="bookPublish">
+                @Html.DisplayFor(model => model.Publish)
+            </p>
+            <input asp-for="Amount" type="number" name="amount" value="1" />
+            <input asp-for="Id" type="hidden"  />
             <br>
-            SKU: 11255563
+            <button class="showbookbutton">Buy</button>
             <br>
 
-        </p>
-        <p class=" bookprise">
+            <input type="submit" value="Add to Cart" class="showbookbutton1"/>
+        </div>
 
-            <span>&euro;</span>
-            @Html.DisplayFor(model => model.Price)
-        </p>
-        <p class="bookpopular">
-            @for (int i = 0; i < Model.Popular; i++)
-            {
-                <span class="starshowbook">&#9733;</span>
-            }
 
-        </p>
-        <p class="bookCategory">
-            @Html.DisplayFor(model => model.CategoryName)
-        </p>
-        <p class="bookPublish">
-            @Html.DisplayFor(model => model.Publish)
-        </p>
-        <button class="showbookbutton">Buy</button>
-        <br>
-        <a asp-action="AddToCart" asp-controller="ShopingCarts" asp-route-Id="@Model.Id"  class="showbookbutton1">Add to Cart</a>
-    </div>
-
+    </form>
 </div>
 
 

@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookStoreOnline.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Online_Book_Store.BookStore.Data;
+using Online_Book_Store.BookStore.Models;
 
 namespace Online_Book_Store.BookStore.Controllers
 {
@@ -15,17 +17,34 @@ namespace Online_Book_Store.BookStore.Controllers
     {
         private readonly UserManager<ApplicationUser> _manager;
         private readonly ApplicationDbContext _context;
+        IBookService _addbook;
 
-        public ShopingCartsController(ApplicationDbContext context, UserManager<ApplicationUser> manager)
+        public ShopingCartsController(ApplicationDbContext context, UserManager<ApplicationUser> manager, IBookService addbook)
         {
             _manager = manager;
             _context = context;
+            _addbook = addbook;
         }
-
+        [Authorize]
         // GET: ShopingCarts
         public async Task<IActionResult> Index()
         {
-            return View(await _context.ShopingCarts.ToListAsync());
+            var shopincCartitems = await _context.ShopingCarts.Include(e=>e.Book).ThenInclude(book => book.Category).ToListAsync();
+
+             
+            return View(shopincCartitems.Select(e=>new ShopingCartModel {
+                Amount=e.Amount,
+                Book=new ViewBook
+                {
+                    Name=e.Book.Name,
+                    Author=e.Book.Author,
+                    Popular=e.Book.Popular,
+                    Price=e.Book.Price,
+                    Publish=e.Book.Publish,
+                    CategoryName=e.Book.Category.Name
+                }
+                
+            }));
         }
 
         // GET: ShopingCarts/Details/5
@@ -154,13 +173,13 @@ namespace Online_Book_Store.BookStore.Controllers
             return _context.ShopingCarts.Any(e => e.Id == id);
         }
 
-
+        [HttpPost]
         [Authorize]
-        public async Task<IActionResult> AddToCart(Guid? id, int amount)
+        public async Task<IActionResult> AddToCart(ViewBook book)
         {
           
         ShopingCart shopingCart = new ShopingCart();
-            if (id == null)
+            if (book.Id == null)
             {
                 return NotFound();
             }
@@ -170,8 +189,8 @@ namespace Online_Book_Store.BookStore.Controllers
                 
                 shopingCart.Id = Guid.NewGuid();
                 shopingCart.ApplicationUserId = Guid.Parse(user.Id);
-                shopingCart.BookId= id.Value;
-                shopingCart.Amount = amount;
+                shopingCart.BookId = book.Id;
+                shopingCart.Amount = book.Amount;
                 _context.Add(shopingCart);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
