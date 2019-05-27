@@ -33,8 +33,9 @@ namespace Online_Book_Store.BookStore.Controllers
 
              
             return View(shopincCartitems.Select(e=>new ShopingCartModel {
-                Id=e.Id,
-                Amount=e.Amount,
+                Id=e.Id,               
+                Amount=e.Amount,   
+                TotalPrice=e.Amount*e.Book.Price,
                 Book=new ViewBook
                 {
                     Id=e.Book.Id,

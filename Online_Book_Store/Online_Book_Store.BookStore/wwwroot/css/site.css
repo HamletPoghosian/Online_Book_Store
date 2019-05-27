@@ -74,7 +74,17 @@ a {
    
     text-decoration: none;
 }
-
+.childrow2froShopingCart {
+    justify-content: center;
+    width: 50%;
+    height: 300px;
+    margin-top: 30px;    
+    margin-bottom: 30px; 
+    text-align: center;
+    font-size: 4px;
+    background-color: #ffffff;
+    outline: 1px solid #bdbbbb;
+}
 .prow {
     font-family: Arial;
     color: black;

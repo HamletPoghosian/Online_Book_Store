@@ -10,43 +10,54 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<div class="rowbook">
+<div class="">
 
 
     @foreach (var item in Model)
     {
 
-        <div class="childrow1">
-            <p class="prow">
-                @Html.DisplayFor(modelItem => item.Book.Author)
-            </p>
-            <p class="prow">
-                @Html.DisplayFor(modelItem => item.Book.Name)
-            </p>
-            <p class="prow">
-                @Html.DisplayFor(modelItem => item.Book.Popular)
-            </p>
-            <p class="prow">
-                @Html.DisplayFor(modelItem => item.Book.Price)
-            </p>
-            <p class="prow">
-                @Html.DisplayFor(modelItem => item.Book.Publish)
-            </p>
-            <p class="prow">
-                @Html.DisplayFor(modelItem => item.Book.CategoryName)
-            </p>
-            <p class="prow">
-                @Html.DisplayFor(modelItem => item.Amount)
-            </p>
-
-
-
-
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-            </div>
+    <div class="childrow2froShopingCart">
+        <p class="prow">
+            @Html.DisplayFor(modelItem => item.Book.Author)
+        </p>
+        <p class="prow">
+            @Html.DisplayFor(modelItem => item.Book.Name)
+        </p>
+        <p class="prow">
+            @{
+                for (int j = 0; j < item.Book.Popular; j++)
+                {
+                    <span class="star">&#9733;</span>
+                }
             }
-        </div>
+        </p>
+        <p class="prow">
+            @Html.DisplayFor(modelItem => item.Book.Price)
+        </p>
+        <p class="prow">
+            @Html.DisplayFor(modelItem => item.Amount)
+        </p>
+        <p class="prow">
+            @Html.DisplayFor(modelItem => item.TotalPrice)
+        </p>
+        <p class="prow">
+            @Html.DisplayFor(modelItem => item.Book.Publish)
+        </p>
+        <p class="prow">
+            @Html.DisplayFor(modelItem => item.Book.CategoryName)
+        </p>
+
+
+
+
+
+        <td>
+            <p class="prow">
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </p>
+        </td>
+    </div>
+    }
+</div>
