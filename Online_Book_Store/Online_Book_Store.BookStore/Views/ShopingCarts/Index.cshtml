@@ -17,32 +17,23 @@
     {
 
     <div class="childrow2froShopingCart">
-        <p class="prow">
-            @Html.DisplayFor(modelItem => item.Book.Author)
-        </p>
-        <p class="prow">
+        <p class="prowName">
             @Html.DisplayFor(modelItem => item.Book.Name)
         </p>
         <p class="prow">
-            @{
-                for (int j = 0; j < item.Book.Popular; j++)
-                {
-                    <span class="star">&#9733;</span>
-                }
-            }
+            @Html.DisplayFor(modelItem => item.Book.Author)
         </p>
+        
         <p class="prow">
             @Html.DisplayFor(modelItem => item.Book.Price)
         </p>
         <p class="prow">
             @Html.DisplayFor(modelItem => item.Amount)
         </p>
-        <p class="prow">
+        <p class="prowPrice">
             @Html.DisplayFor(modelItem => item.TotalPrice)
         </p>
-        <p class="prow">
-            @Html.DisplayFor(modelItem => item.Book.Publish)
-        </p>
+       
         <p class="prow">
             @Html.DisplayFor(modelItem => item.Book.CategoryName)
         </p>
