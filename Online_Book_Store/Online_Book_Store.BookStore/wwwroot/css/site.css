@@ -141,15 +141,15 @@ a {
 }
 
 .SeePopBook {
+    background-color: #f5e6b2;
     width: 100%;
     margin-bottom: 10px;
-    background-color: black;
 }
 
 .seepopbookp {
-    color: azure;
+    color: black;
     text-align: center;
-    font-size: 40px;
+    font-size: 35px;
 }
 
 .sectiondiv1 {
