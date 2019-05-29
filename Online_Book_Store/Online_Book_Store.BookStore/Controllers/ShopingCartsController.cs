@@ -196,8 +196,7 @@ namespace Online_Book_Store.BookStore.Controllers
                     shopingCart.ApplicationUserId = Guid.Parse(user.Id);
                     shopingCart.BookId = book.Id;
                     shopingCart.Amount = book.Amount;
-                    _context.Add(shopingCart);
-                  
+                    _context.Add(shopingCart);                  
                 }
                 else
                 {
