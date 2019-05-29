@@ -350,7 +350,21 @@ a:hover {
     
 }
 
-
+.showbookAmount {
+    background-color: #fceccf;
+    border: none;
+    color: black;
+    width:50%;
+    text-align: center;
+    outline: solid;
+    outline-color: goldenrod;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
 .showbookbutton {
     background-color: #555555;
     border: none;

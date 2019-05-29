@@ -46,10 +46,8 @@
             <p class="bookCategory">
                 @Html.DisplayFor(model => model.CategoryName)
             </p>
-            <p class="bookPublish">
-                @Html.DisplayFor(model => model.Publish)
-            </p>
-            <input  min="1"  asp-for="Amount" type="number" name="amount" value="1" />
+           
+            <input class="showbookAmount" min="1"  asp-for="Amount" type="number" name="amount" value="1" />
             <input asp-for="Id" type="hidden"  />
             <br>
             <button class="showbookbutton">Buy</button>

@@ -188,8 +188,7 @@ namespace Online_Book_Store.BookStore.Controllers
             }
             if (ModelState.IsValid)
             {
-                var user = await GetCurrentUser();               
-                
+                var user = await GetCurrentUser();              
                 shopingCart.Id = Guid.NewGuid();
                 shopingCart.ApplicationUserId = Guid.Parse(user.Id);
                 shopingCart.BookId = book.Id;
@@ -206,5 +205,7 @@ namespace Online_Book_Store.BookStore.Controllers
         {
             return await _manager.GetUserAsync(HttpContext.User);
         }
+       
+
     }
 }
