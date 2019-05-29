@@ -189,12 +189,22 @@ namespace Online_Book_Store.BookStore.Controllers
             if (ModelState.IsValid)
             {
                 var user = await GetCurrentUser();              
-                shopingCart.Id = Guid.NewGuid();
-                shopingCart.ApplicationUserId = Guid.Parse(user.Id);
-                shopingCart.BookId = book.Id;
-                shopingCart.Amount = book.Amount;
-                _context.Add(shopingCart);
-                await _context.SaveChangesAsync();
+                var a =await _context.ShopingCarts.Where(e => e.BookId == book.Id && e.ApplicationUserId.ToString()== user.Id).SingleOrDefaultAsync();
+                if (a == null)
+                {
+                    shopingCart.Id = Guid.NewGuid();
+                    shopingCart.ApplicationUserId = Guid.Parse(user.Id);
+                    shopingCart.BookId = book.Id;
+                    shopingCart.Amount = book.Amount;
+                    _context.Add(shopingCart);
+                  
+                }
+                else
+                {
+                    a.Amount += book.Amount;
+                    _context.ShopingCarts.Update(a);
+                }
+                  await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
 
