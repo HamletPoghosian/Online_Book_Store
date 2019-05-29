@@ -184,7 +184,7 @@ namespace Online_Book_Store.BookStore.Controllers
         ShopingCart shopingCart = new ShopingCart();
             if (book.Id == null)
             {
-                return NotFound();
+                return RedirectToAction("GetBooks","Books");
             }
             if (ModelState.IsValid)
             {
@@ -211,7 +211,13 @@ namespace Online_Book_Store.BookStore.Controllers
 
             return View();
         }
-        private async Task<ApplicationUser> GetCurrentUser()
+        [HttpGet]
+        public  IActionResult AddToCart()
+        {
+                return RedirectToAction("Index", "Books");         
+
+        }
+            private async Task<ApplicationUser> GetCurrentUser()
         {
             return await _manager.GetUserAsync(HttpContext.User);
         }
