@@ -89,6 +89,26 @@ a {
     background-color: #ffffff;
     outline: 1px solid #bdbbbb;
 }
+.childrow2froCategories {
+    justify-content: center;
+    position: relative;
+    width: 55%;
+    height: 300px;
+    display: inline-block;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 4px;
+    background-color: #ffffff;
+    outline: 2px solid dimgray;
+}
+.prowCategories {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: black;
+    line-height: normal;
+    text-align: unset;
+    font-size: 30px;
+}
 .prow {
     font-family: Arial;
     color: black;

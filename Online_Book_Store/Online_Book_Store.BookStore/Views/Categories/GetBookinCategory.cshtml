@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ViewBook>
+
+@{
+    ViewData["Title"] = "GetBookinCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetBookinCategory</h2>
+
+
+
+<div class="rowbookcart">
+    @foreach (var item in Model)
+    {
+
+        {
+            <div class="childrow2froShopingCart">
+                <div>
+                    <div>
+                        <a class="childrow1a" asp-controller="Books" asp-action="GetBooks" asp-route-Id="@item.Id">
+                            <p class="prowName">
+
+                                @item.Name
+                            </p>
+                            <p class="prow">
+                                @item.Author
+                            </p>
+                            <p class="prowPrice">
+                                @item.Price <span>&#1423;</span>
+                            </p>
+
+                            <p class="prow">
+                                @{
+                                    for (int j = 0; j < item.Popular; j++)
+                                    {
+                                        <span class="star">&#9733;</span>
+                                    }
+                                }
+                            </p>
+                            <p class="prowCategory">
+
+                                @item.CategoryName
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+
+    }
+</div>

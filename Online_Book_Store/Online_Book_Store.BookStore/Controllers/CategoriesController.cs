@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Online_Book_Store.BookStore.Data;
+using Online_Book_Store.BookStore.Models;
 
 namespace Online_Book_Store.BookStore.Controllers
 {
@@ -149,5 +150,28 @@ namespace Online_Book_Store.BookStore.Controllers
         {
             return _context.Categorys.Any(e => e.Id == id);
         }
+
+
+        public async Task<IActionResult> GetBookinCategory(string bookcategory)
+        {
+            if (bookcategory == null)
+            {
+                return NotFound();
+            }
+            var category = await _context.Categorys.Where(c => c.Name == bookcategory).FirstOrDefaultAsync();
+            var bookCategory =  _context.Books.Where(b => b.Category.Name== category.Name).ToList();
+           
+            return View( bookCategory.Select(b=>new ViewBook
+            {
+                Id=b.Id,
+                Name=b.Name,
+                CategoryName=b.CategoryName,               
+                Popular=b.Popular,
+                Price=b.Price,
+                Publish=b.Publish,
+                Author=b.Author
+            }));
+        }
+
     }
 }
