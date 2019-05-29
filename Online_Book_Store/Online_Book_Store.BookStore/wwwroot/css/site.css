@@ -103,12 +103,13 @@ a {
     outline: 2px solid dimgray;
 }
 .prowCategories {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Dosis', sans-serif;
     color: black;
     line-height: normal;
     text-align: unset;
-    font-size: 30px;
+    font-size: 25px;
 }
+
 .prow {
     font-family: Arial;
     color: black;
