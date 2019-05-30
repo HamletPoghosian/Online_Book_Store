@@ -511,7 +511,9 @@ a:hover {
     background-color: black;
     font-size: 20px;
 }
-
+::selection {
+    background: #8e8e8e;
+}
 .navbar-brand {
     font-size: 30px;
     font-family: 'Dancing Script', cursive;
