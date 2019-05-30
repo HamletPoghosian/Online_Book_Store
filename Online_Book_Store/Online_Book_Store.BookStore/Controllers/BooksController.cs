@@ -232,5 +232,30 @@ namespace Online_Book_Store.BookStore.Controllers
 
             ViewData["CategoryName"] = new SelectList(categories, "Id", "Name");
         }
+
+
+
+        public async Task<IActionResult> AllBooks()
+        {
+
+            var book =await  _context.Books.Include(b => b.Category).ToListAsync();
+
+               
+
+            if (book == null)
+            {
+                return NotFound();
+            }
+
+            return View(book.Select(b=>new ViewBook {
+                Id=b.Id,
+                Author=b.Author,
+                Name=b.Name,
+                CategoryName=b.Category.Name,
+                Popular=b.Popular,
+                Price=b.Price,
+                Publish=b.Publish
+            }));
+        }
     }
 }
