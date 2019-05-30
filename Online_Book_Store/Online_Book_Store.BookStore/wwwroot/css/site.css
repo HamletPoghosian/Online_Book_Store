@@ -45,9 +45,7 @@ body {
 .rowbook {
     display: flex;
 }
-.rowbookcart {
 
-}
 .row {
     display: flex;
     justify-content: center;
@@ -92,7 +90,7 @@ a {
 .childrow2froCategories {
     justify-content: center;
     position: relative;
-    width: 55%;
+    width: 100%;
     height: 300px;
     display: inline-block;
     margin-top: 30px;
@@ -101,6 +99,11 @@ a {
     font-size: 4px;
     background-color: #ffffff;
     outline: 2px solid dimgray;
+}
+.categorybodydiv {
+padding-left:20%;
+padding-right:20%;
+
 }
 .prowCategories {
     font-family: 'Dosis', sans-serif;
