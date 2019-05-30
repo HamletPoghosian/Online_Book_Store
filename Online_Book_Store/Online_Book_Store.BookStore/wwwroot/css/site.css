@@ -527,8 +527,8 @@ a:hover {
 
         .navbar-inverse .navbar-brand:hover {
             background-color: black;
-            font-family: "TheMix_500",Helvetica,Arial,sans-serif;
-            font-size: 30px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 35px;
         }
 
 Button:hover {
