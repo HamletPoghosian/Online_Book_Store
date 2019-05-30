@@ -152,11 +152,16 @@ namespace Online_Book_Store.BookStore.Controllers
 
             var shopingCart = await _context.ShopingCarts
                 .FirstOrDefaultAsync(m => m.Id == id);
+            var book = await _addbook.GetBookAsync(shopingCart.BookId);
+
             if (shopingCart == null)
             {
                 return NotFound();
             }
-
+            shopingCart.Book.Name = book.Name;
+            shopingCart.Book.Author = book.Author;
+            shopingCart.Book.Price = book.Price;
+            
             return View(shopingCart);
         }
 
