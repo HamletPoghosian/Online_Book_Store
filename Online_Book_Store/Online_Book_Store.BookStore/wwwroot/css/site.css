@@ -101,9 +101,10 @@ a {
     outline: 2px solid dimgray;
 }
 .categorybodydiv {
-padding-left:20%;
-padding-right:20%;
-
+    background-color:#f7efec;
+   
+    padding-left: 25%;
+    padding-right: 25%;
 }
 .prowCategories {
     font-family: 'Dosis', sans-serif;
