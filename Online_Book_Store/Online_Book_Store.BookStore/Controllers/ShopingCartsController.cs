@@ -29,7 +29,9 @@ namespace Online_Book_Store.BookStore.Controllers
         // GET: ShopingCarts
         public async Task<IActionResult> Index()
         {
-            var shopincCartitems = await _context.ShopingCarts.Include(e=>e.Book).ThenInclude(book => book.Category).ToListAsync();
+            var user = await GetCurrentUser();
+
+            var shopincCartitems = await _context.ShopingCarts.Include(e=>e.Book).ThenInclude(book => book.Category).Where(u=>u.ApplicationUserId.ToString()==user.Id).ToListAsync();
 
              
             return View(shopincCartitems.Select(e=>new ShopingCartModel {
@@ -161,7 +163,7 @@ namespace Online_Book_Store.BookStore.Controllers
             shopingCart.Book.Name = book.Name;
             shopingCart.Book.Author = book.Author;
             shopingCart.Book.Price = book.Price;
-            
+            shopingCart.Book.Author = book.Author;
             return View(shopingCart);
         }
 
