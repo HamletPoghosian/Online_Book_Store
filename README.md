@@ -9,3 +9,7 @@ A responsive website that displays available books in the store, along with thei
 * Buy a book.
 * Get books similar to a particular given book.
 * Get books bought by a user who bought a given book.
+## Admin features
+* Addition of books to database.
+* Get statistics of the book store.
+* Moderation of various activities.
