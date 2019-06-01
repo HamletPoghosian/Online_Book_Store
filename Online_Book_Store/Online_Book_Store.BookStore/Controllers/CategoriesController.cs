@@ -44,7 +44,7 @@ namespace Online_Book_Store.BookStore.Controllers
 
             return View(category);
         }
-        [Authorize(Roles = "Admin")]
+        
         // GET: Categories/Create
         public IActionResult Create()
         {
@@ -54,7 +54,7 @@ namespace Online_Book_Store.BookStore.Controllers
         // POST: Categories/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "Admin")]
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Discription")] Category category)
