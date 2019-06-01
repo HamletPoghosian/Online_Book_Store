@@ -51,9 +51,10 @@ namespace Online_Book_Store.BookStore
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext context)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext context,RoleManager<IdentityRole> rolMeneger)
         {
             context.Database.Migrate();
+            AddRole(rolMeneger).Wait();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -77,6 +78,17 @@ namespace Online_Book_Store.BookStore
                     name: "default",
                     template: "{controller=Books}/{action=Index}/{id?}");
             });
+        }
+        public async Task AddRole(RoleManager<IdentityRole> rolMeneger)
+        {
+            if  ( ! (await rolMeneger.RoleExistsAsync("User"))) {
+            IdentityRole e = new IdentityRole("User");
+            
+            await rolMeneger.CreateAsync(e);
+
+            }
+
+
         }
     }
 }

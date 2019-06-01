@@ -24,6 +24,7 @@ namespace Online_Book_Store.BookStore.Controllers
         // GET: Categories
         public async Task<IActionResult> Index()
         {
+
             return View(await _context.Categorys.ToListAsync());
         }
 

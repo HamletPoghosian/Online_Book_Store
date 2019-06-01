@@ -26,6 +26,7 @@ namespace Online_Book_Store.BookStore.Areas.Identity.Pages.Account
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender
+               
            )
         {
             _userManager = userManager;
@@ -68,9 +69,11 @@ namespace Online_Book_Store.BookStore.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
+               
                 var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
                 
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                
                 await _userManager.AddToRoleAsync(user,"User");
                 if (result.Succeeded)
                 {

@@ -30,6 +30,7 @@ namespace Online_Book_Store.BookStore.Controllers
         // GET: Books
         public async Task<IActionResult> Index()
         {
+           
             var entity = await _addBook.GetBooksAsync();
             
            
