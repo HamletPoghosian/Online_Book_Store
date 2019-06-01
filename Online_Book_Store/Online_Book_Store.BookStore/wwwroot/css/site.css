@@ -174,9 +174,9 @@ background-color:#ffdfb0;
 }
 
 .pimagesize {
-    width: 100px;
-    height: 100px;
-    padding: 10px;
+    width: 200%;
+    height: 200%;
+    padding: 5px;
 }
 
 .imagehr {
