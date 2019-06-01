@@ -87,6 +87,13 @@ namespace Online_Book_Store.BookStore
             await rolMeneger.CreateAsync(e);
 
             }
+            if (!(await rolMeneger.RoleExistsAsync("Admin")))
+            {
+                IdentityRole e = new IdentityRole("Admin");
+
+                await rolMeneger.CreateAsync(e);
+
+            }
 
 
         }

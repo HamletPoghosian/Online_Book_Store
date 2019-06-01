@@ -79,6 +79,7 @@ namespace Online_Book_Store.BookStore.Controllers
         // POST: ShopingCarts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,ApplicationUserId,Amount")] ShopingCart shopingCart)
