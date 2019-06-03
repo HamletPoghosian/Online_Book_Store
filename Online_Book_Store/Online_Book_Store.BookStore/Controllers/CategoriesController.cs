@@ -149,7 +149,7 @@ namespace Online_Book_Store.BookStore.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
+       
         private bool CategoryExists(Guid id)
         {
             return _context.Categorys.Any(e => e.Id == id);

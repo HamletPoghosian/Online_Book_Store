@@ -224,7 +224,12 @@ namespace Online_Book_Store.BookStore.Controllers
                 return RedirectToAction("Index", "Books");         
 
         }
-            private async Task<ApplicationUser> GetCurrentUser()
+        public IActionResult Buy()
+        {
+
+            return  View();
+        }
+        private async Task<ApplicationUser> GetCurrentUser()
         {
             return await _manager.GetUserAsync(HttpContext.User);
         }
