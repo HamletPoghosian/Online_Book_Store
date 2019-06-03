@@ -14,7 +14,7 @@
     <div class="bookimage">
         <img class="showbookimg" src="https://www.iasbee.com/wp-content/uploads/2019/03/book_preloader.gif" alt="Text" />
     </div>
-    <form  asp-action="AddToCart" asp-controller="ShopingCarts" method="post">
+    <form asp-action="AddToCart" asp-controller="ShopingCarts" method="post">
         <div class="bookshowvalue ">
             <p class="bookname">
                 @Html.DisplayFor(model => model.Name)
@@ -46,18 +46,19 @@
             <p class="bookCategory">
                 @Html.DisplayFor(model => model.CategoryName)
             </p>
-           
-            <input class="showbookAmount" min="1"  asp-for="Amount" type="number" name="amount" value="1" />
-            <input asp-for="Id" type="hidden"  />
+
+            <input class="showbookAmount" min="1" asp-for="Amount" type="number" name="amount" value="1" />
+            <input asp-for="Id" type="hidden" />
             <br>
-            <button class="showbookbutton">Buy</button>
             <br>
 
-            <input type="submit" value="Add to Cart" class="showbookbutton1"/>
+            <input type="submit" value="Add to Cart" class="showbookbutton1" />
         </div>
 
 
     </form>
+    
+
 </div>
 
 
