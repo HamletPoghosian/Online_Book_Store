@@ -55,6 +55,7 @@ namespace Online_Book_Store.BookStore
         {
             context.Database.Migrate();
             AddRole(rolMeneger).Wait();
+            AddBook(context).Wait();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -78,6 +79,30 @@ namespace Online_Book_Store.BookStore
                     name: "default",
                     template: "{controller=Books}/{action=Index}/{id?}");
             });
+        }
+        public async Task AddBook(ApplicationDbContext context)
+        {
+            var book = new Book
+            {
+                Id = new Guid(),
+                Author = "Hourly History",
+                Name = "Leonardo da Vinci",
+                Popular = 3,
+                Price = 5000,
+                Publish = DateTime.Now,
+                Category = new Category
+                {
+                    Id = new Guid(),
+                    Name = "History",
+                    Discription = "In our History Books section you'll find used books on local history and histories of international events, histories by epoch and histories by continent. Whether history is a passionate interest, or your field of study, our low prices will open up any field to you whether you're interested in the last decade of the last millennium. When you ship history books at you read more and spend less."
+
+                },
+
+            };
+            for (int i = 0; i < 15; i++)
+            {
+             await context.Books.AddAsync(book);
+            }
         }
         public async Task AddRole(RoleManager<IdentityRole> rolMeneger)
         {
