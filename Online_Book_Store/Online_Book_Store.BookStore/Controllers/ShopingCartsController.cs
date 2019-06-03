@@ -224,9 +224,14 @@ namespace Online_Book_Store.BookStore.Controllers
                 return RedirectToAction("Index", "Books");         
 
         }
-        public IActionResult Buy()
+        public  IActionResult Buy(string  Id)
         {
-
+            var entyty = new ShopingCart
+            {
+                Id=Guid.Parse(Id),                
+            };
+            _context.ShopingCarts.Remove(entyty);
+             _context.SaveChanges();
             return  View();
         }
         private async Task<ApplicationUser> GetCurrentUser()

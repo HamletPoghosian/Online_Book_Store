@@ -16,38 +16,38 @@
     @foreach (var item in Model)
     {
 
-    <div class="childrow2froShopingCart">
-        <p class="prowName">
-            @Html.DisplayFor(modelItem => item.Book.Name)
-        </p>
-        <p class="prow">
-            @Html.DisplayFor(modelItem => item.Book.Author)
-        </p>
-
-        <p class="prow">
-            @Html.DisplayFor(modelItem => item.Book.Price)
-        </p>
-        <p class="prow">
-            @Html.DisplayFor(modelItem => item.Amount)
-        </p>
-        <p class="prowPriceTotal">
-           Total Price @Html.DisplayFor(modelItem => item.TotalPrice)
-        </p>
-
-        <p class="prow">
-            @Html.DisplayFor(modelItem => item.Book.CategoryName)
-        </p>
-        <button class="showbookbutton">Buy</button>
-
-
-
-
-        <td>
+        <div class="childrow2froShopingCart">
+            <p class="prowName">
+                @Html.DisplayFor(modelItem => item.Book.Name)
+            </p>
             <p class="prow">
-                       
+                @Html.DisplayFor(modelItem => item.Book.Author)
+            </p>
+
+            <p class="prow">
+                @Html.DisplayFor(modelItem => item.Book.Price)
+            </p>
+            <p class="prow">
+                @Html.DisplayFor(modelItem => item.Amount)
+            </p>
+            <p class="prowPriceTotal">
+                Total Price @Html.DisplayFor(modelItem => item.TotalPrice)
+            </p>
+
+            <p class="prow">
+                @Html.DisplayFor(modelItem => item.Book.CategoryName)
+            </p>
+            <a asp-action="Buy" asp-route-Id="@item.Id" class="showbookbutton">Buy</a>
+
+
+
+
+
+            <p class="prow">
+
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </p>
-        </td>
-    </div>
+
+        </div>
     }
 </div>
