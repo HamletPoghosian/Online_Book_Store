@@ -55,12 +55,10 @@ namespace Online_Book_Store.BookStore.Controllers
                 return NotFound();
             }
             var entity = await _addBook.GetBookAsync(id.Value);
-            
+
             await _addBook.EditAsync(entity);
                 
-            //var book = await _context.Books
-            //    .Include(b => b.Category)
-            //    .FirstOrDefaultAsync(m => m.Id == id);
+           
             if (entity == null)
             {
                 return NotFound();
@@ -95,7 +93,7 @@ namespace Online_Book_Store.BookStore.Controllers
 
             return View(viewBook);
         }
-        
+        [Authorize(Roles = "Admin")]
         // GET: Books/Create
         public  IActionResult Create()
         {
@@ -106,7 +104,7 @@ namespace Online_Book_Store.BookStore.Controllers
         // POST: Books/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Author,Popular,Price,Publish,CategoryId")] Book book)
@@ -125,6 +123,7 @@ namespace Online_Book_Store.BookStore.Controllers
         }
 
         // GET: Books/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null)
@@ -147,7 +146,7 @@ namespace Online_Book_Store.BookStore.Controllers
         // POST: Books/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, [Bind("Id,Name,Author,Popular,Price,Publish,CategoryId")] Book book)
@@ -181,8 +180,10 @@ namespace Online_Book_Store.BookStore.Controllers
             ViewData["CategoryId"] = new SelectList(_context.Categorys, "Id", "Id", book.CategoryId);
             return View(book);
         }
-       
+
+
         // GET: Books/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null)
@@ -205,6 +206,7 @@ namespace Online_Book_Store.BookStore.Controllers
         }
 
         // POST: Books/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)

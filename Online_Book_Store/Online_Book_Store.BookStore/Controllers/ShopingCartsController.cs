@@ -51,7 +51,7 @@ namespace Online_Book_Store.BookStore.Controllers
                 
             }));
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: ShopingCarts/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
@@ -69,7 +69,7 @@ namespace Online_Book_Store.BookStore.Controllers
 
             return View(shopingCart);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: ShopingCarts/Create
         public IActionResult Create()
         {
@@ -79,7 +79,9 @@ namespace Online_Book_Store.BookStore.Controllers
         // POST: ShopingCarts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
+
+        [Authorize(Roles = "Admin")]
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,ApplicationUserId,Amount")] ShopingCart shopingCart)
@@ -115,6 +117,7 @@ namespace Online_Book_Store.BookStore.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(Guid id, [Bind("Id,ApplicationUserId,Amount")] ShopingCart shopingCart)
         {
             if (id != shopingCart.Id)
@@ -144,7 +147,7 @@ namespace Online_Book_Store.BookStore.Controllers
             }
             return View(shopingCart);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: ShopingCarts/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
         {
@@ -169,6 +172,7 @@ namespace Online_Book_Store.BookStore.Controllers
         }
 
         // POST: ShopingCarts/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
