@@ -47,11 +47,11 @@ namespace Online_Book_Store.BookStore
             services.AddBook();
             services.AddCategory();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext context,RoleManager<IdentityRole> rolMeneger)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext context, RoleManager<IdentityRole> rolMeneger)
         {
             context.Database.Migrate();
             AddRole(rolMeneger).Wait();
@@ -82,34 +82,38 @@ namespace Online_Book_Store.BookStore
         }
         public async Task AddBook(ApplicationDbContext context)
         {
-            var book = new Book
-            {
-                Id = new Guid(),
-                Author = "Hourly History",
-                Name = "Leonardo da Vinci",
-                Popular = 3,
-                Price = 5000,
-                Publish = DateTime.Now,
-                Category = new Category
-                {
-                    Id = new Guid(),
-                    Name = "History",
-                    Discription = "In our History Books section you'll find used books on local history and histories of international events, histories by epoch and histories by continent. Whether history is a passionate interest, or your field of study, our low prices will open up any field to you whether you're interested in the last decade of the last millennium. When you ship history books at you read more and spend less."
 
-                },
-
-            };
             for (int i = 0; i < 15; i++)
             {
-             await context.Books.AddAsync(book);
+                await context.Books.AddAsync(
+                    new Book
+                    {
+                        Id = new Guid(),
+                        Author = "Author "+i,
+                        Name = "Book "+i,
+                        Popular = 3,
+                        Price = 5000+(i*100),
+                        Publish = DateTime.Now,
+                        Category = new Category
+                        {
+                            Id = new Guid(),
+                            Name = "History "+i,
+                            Discription = "In our History Books section you'll find used books on local history and histories of international events, histories by epoch and histories by continent. Whether history is a passionate interest, or your field of study, our low prices will open up any field to you whether you're interested in the last decade of the last millennium. When you ship history books at you read more and spend less."
+
+                        },
+
+                    });
+                await context.SaveChangesAsync();
+  
             }
         }
         public async Task AddRole(RoleManager<IdentityRole> rolMeneger)
         {
-            if  ( ! (await rolMeneger.RoleExistsAsync("User"))) {
-            IdentityRole e = new IdentityRole("User");
-            
-            await rolMeneger.CreateAsync(e);
+            if (!(await rolMeneger.RoleExistsAsync("User")))
+            {
+                IdentityRole e = new IdentityRole("User");
+
+                await rolMeneger.CreateAsync(e);
 
             }
             if (!(await rolMeneger.RoleExistsAsync("Admin")))
