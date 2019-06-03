@@ -147,7 +147,7 @@ namespace Online_Book_Store.BookStore.Controllers
             }
             return View(shopingCart);
         }
-        [Authorize(Roles = "Admin")]
+        
         // GET: ShopingCarts/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
         {
@@ -172,7 +172,7 @@ namespace Online_Book_Store.BookStore.Controllers
         }
 
         // POST: ShopingCarts/Delete/5
-        [Authorize(Roles = "Admin")]
+   
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
