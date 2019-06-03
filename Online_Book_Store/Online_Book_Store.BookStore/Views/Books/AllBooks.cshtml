@@ -11,44 +11,46 @@
     <a asp-action="Create">Create New</a>
 </p>
 
-  
+
 <div class="rowbookcart">
 
 
     @foreach (var item in Model)
     {
 
-    <div class="childrow2froShopingCart">
-        <a class="childrow1a" asp-controller="Books" asp-action="GetBooks" asp-route-Id="@item.Id">
-            <p class="prowName">
-                @Html.DisplayFor(modelItem => item.Name)
-            </p>
-            <p class="prow">
-                @Html.DisplayFor(modelItem => item.Author)
-            </p>
+        <div class="childrow2froShopingCart">
+            <a class="childrow1a" asp-controller="Books" asp-action="GetBooks" asp-route-Id="@item.Id">
+                <p class="prowName">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </p>
+                <p class="prow">
+                    @Html.DisplayFor(modelItem => item.Author)
+                </p>
 
-            <p class="prow">
-                @Html.DisplayFor(modelItem => item.Price)<span>&#1423;</span>
-            </p>
-            <p class="prow">
-                @{
-                    for (int j = 0; j < item.Popular; j++)
-                    {
-                        <span class="star">&#9733;</span>
+                <p class="prow">
+                    @Html.DisplayFor(modelItem => item.Price)<span>&#1423;</span>
+                </p>
+                <p class="prow">
+                    @{
+                        for (int j = 0; j < item.Popular; j++)
+                        {
+                            <span class="star">&#9733;</span>
+                        }
                     }
-                }
-            </p>
+                </p>
 
-            <p class="prow">
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </p>
-         
+                <p class="prow">
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </p>
+
 
 
             </a>
 
-            
-    </div>
+
+        </div>
+
     }
 </div>
-   
+<a asp-action="AllBooks"  asp-route-count="0" class="paginationsm">1</a>
+<a asp-action="AllBooks" asp-route-count="1" class="paginationsm" >2</a>

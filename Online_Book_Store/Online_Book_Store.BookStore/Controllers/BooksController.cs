@@ -237,8 +237,8 @@ namespace Online_Book_Store.BookStore.Controllers
         }
 
 
-
-        public async Task<IActionResult> AllBooks()
+       
+        public async Task<IActionResult> AllBooks(int count=0)
         {
 
             var book =await  _context.Books.Include(b => b.Category).ToListAsync();
@@ -258,7 +258,7 @@ namespace Online_Book_Store.BookStore.Controllers
                 Popular=b.Popular,
                 Price=b.Price,
                 Publish=b.Publish
-            }));
+            }).Skip(count*10).Take(10));
         }
     }
 }

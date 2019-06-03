@@ -420,22 +420,49 @@ a:hover {
     cursor: pointer;
     margin-bottom: 8px;
 }
-
-    .showbookbutton:hover {
+.paginationsm {
+    background-color: #555555;
+    border: none;
+    color: white;  
+    outline: solid;
+    outline-color: #555555;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    margin: 4px 2px;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+    .paginationsm:hover {
         background-color: goldenrod;
         border: none;
-        color: black;
-        padding: 10px 30px;
-        text-align: center;
+        color: white;
         outline: solid;
         outline-color: goldenrod;
+        text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-size: 25px;
+        font-size: 30px;
         margin: 4px 2px;
         cursor: pointer;
         margin-bottom: 8px;
     }
+.showbookbutton:hover {
+    background-color: goldenrod;
+    border: none;
+    color: black;
+    padding: 10px 30px;
+    text-align: center;
+    outline: solid;
+    outline-color: goldenrod;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    margin: 4px 2px;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
 
 .showbookbutton1 {
     background-color: white;
