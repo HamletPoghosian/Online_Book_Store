@@ -118,6 +118,7 @@ namespace Online_Book_Store.BookStore.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> Edit(Guid id, [Bind("Id,ApplicationUserId,Amount")] ShopingCart shopingCart)
         {
             if (id != shopingCart.Id)
