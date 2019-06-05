@@ -5,18 +5,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>AllBooks</h2>
+<h2>Books</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 
-
 <div class="rowbookcart">
 
     @foreach (var item in Model)
     {
-
         <div class="childrow2froShopingCart">
             <a class="childrow1a" asp-controller="Books" asp-action="GetBooks" asp-route-Id="@item.Id">
                 <p class="prowName">
@@ -37,7 +35,6 @@
                         }
                     }
                 </p>
-
                 <p class="prow">
                     @Html.DisplayFor(modelItem => item.CategoryName)
                 </p>
@@ -45,6 +42,7 @@
         </div>
     }
 </div>
+
 @for (int i = 0; i < Model.Count(); i++)
 {
 <a asp-action="AllBooks"  asp-route-count="@i" class="paginationsm">@i</a>
