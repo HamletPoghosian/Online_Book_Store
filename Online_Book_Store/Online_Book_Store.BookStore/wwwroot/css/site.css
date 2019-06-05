@@ -106,7 +106,11 @@ a {
 background-color:#ffdfb0;
 
 }
-.categorybodydiv {
+.childrow2froShopingCart:hover
+{
+    background-color: #fcead0;
+}
+    .categorybodydiv {
     background-color:#ffffff;
    
     padding-left: 25%;
