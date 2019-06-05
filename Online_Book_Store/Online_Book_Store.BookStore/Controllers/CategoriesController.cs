@@ -22,10 +22,10 @@ namespace Online_Book_Store.BookStore.Controllers
         }
 
         // GET: Categories
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int count = 0)
         {
 
-            return View(await _context.Categorys.ToListAsync());
+            return View(await _context.Categorys.Skip(count * 10).Take(10).ToListAsync());
         }
 
         // GET: Categories/Details/5

@@ -14,7 +14,7 @@
 
 
 <div class=" categorybodydiv">
-    
+
 
     @foreach (var item in Model)
     {
@@ -22,7 +22,7 @@
 
 
             <div class="childrow2froCategories">
-                <img class="readbookCategoyicon" src="https://www.waukon.lib.ia.us/images/p2014/home-images/2010/osweb_040.jpg/image"  />
+                <img class="readbookCategoyicon" src="https://www.waukon.lib.ia.us/images/p2014/home-images/2010/osweb_040.jpg/image" />
                 <p class="prowName">
 
                     @Html.DisplayFor(modelItem => item.Name)
@@ -42,4 +42,9 @@
 
     }
 </div>
+@for (int i = 0; i < Model.Count(); i++)
+{
+    <a asp-action="Index" asp-route-count="@i" class="paginationsm">@i</a>
+
+}
 
