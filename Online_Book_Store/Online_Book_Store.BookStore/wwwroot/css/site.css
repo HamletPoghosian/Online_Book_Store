@@ -102,6 +102,19 @@ a {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.childrow2froFiltr {
+    justify-content: center;
+    position: relative;
+    width: 98%;
+    height: 200px;
+    display: inline-block;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 4px;
+    background-color: #f8f8f0;
+    outline: 1px solid #bdbbbb;
+}
 .childrow2froCategories:hover {
 background-color:#ffdfb0;
 
