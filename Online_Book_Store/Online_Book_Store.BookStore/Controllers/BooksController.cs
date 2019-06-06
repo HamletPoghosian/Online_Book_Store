@@ -239,18 +239,18 @@ namespace Online_Book_Store.BookStore.Controllers
         }
 
 
-       [HttpPost]
+        [HttpPost]
         public async Task<IActionResult> AllBooks(ViewSearch model)
         {
 
-            IEnumerable<Book> book =  _context.Books.Include(b => b.Category);
-            if(!string.IsNullOrEmpty(model.Name))
-            {
-                book = book.Where(b => b.Name == model.Name);
-            }
+            IEnumerable<Book> book = _context.Books.Include(b => b.Category);
             if (!string.IsNullOrEmpty(model.Name))
             {
                 book = book.Where(b => b.Name == model.Name);
+            }
+            if (!string.IsNullOrEmpty(model.Author))
+            {
+                book = book.Where(b => b.Name == model.Author);
             }
             if (!string.IsNullOrEmpty(model.Author))
             {
@@ -258,13 +258,16 @@ namespace Online_Book_Store.BookStore.Controllers
             }
             if ((model.MaxPrice != 0) && (model.MinPrice != 0))
             {
-                book = book.Where(b => b.Price >=model.MinPrice&&b.Price<=model.MaxPrice);
+                book = book.Where(b => b.Price >= model.MinPrice && b.Price <= model.MaxPrice);
             }
             if (model.Publish != null)
             {
                 book = book.Where(b => b.Publish == model.Publish);
             }
-
+            if (model.Popular != 0)
+            {
+                book = book.Where(b => b.Popular == model.Popular);
+            }
 
             if (book == null)
             {
