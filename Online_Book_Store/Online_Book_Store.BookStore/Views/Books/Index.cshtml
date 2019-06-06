@@ -192,7 +192,50 @@
 
     }
 </div>
+<div class="rowbook">
 
+
+    @foreach (var item in Model.Skip(13).Take(2))
+    {
+
+        {
+            <div class="childrow1">
+                <div>
+                    <div>
+                        <a class="childrow1a" asp-controller="Books" asp-action="GetBooks" asp-route-Id="@item.Id">
+                            <p class="prowName">
+
+                                @item.Name
+                            </p>
+                            <p class="prow">
+                                @item.Author
+                            </p>
+                            <p class="prowPrice">
+                                @item.Price <span>&#1423;</span>
+                            </p>
+
+                            <p class="prow">
+                                @{
+                                    for (int j = 0; j < item.Popular; j++)
+                                    {
+                                        <span class="star">&#9733;</span>
+                                    }
+                                }
+                            </p>
+                            <p class="prowCategory">
+
+                                @item.CategoryName
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+
+    }
+</div>
 <div class="SeePopBook">
     <p class="seepopbookp">
         Buy Our Top Popular Books
