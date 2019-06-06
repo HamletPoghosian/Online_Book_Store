@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Online_Book_Store.BookStore.Models.ViewBook>
+﻿@model ViewSearch
 
 @{
     ViewData["Title"] = "AllBooks";
@@ -9,17 +9,33 @@
 
 
 <form method="post">
-    Book Name <input type="text" name="name"  />
-    Min Value<input type="number" min="0" max="5000">
-    Max Value <input type="number" min="0" max="10000">
-    
+   
 
-    <input type="submit" >
+     <input asp-for="Name" type="text"  />
+    <br>
+     <input type="text" />
+    <br>
+    <input type="date" />
+    <br>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Minimum and Maximum price</span>
+        </div>
+        <input type="number" aria-label="Minimum price" class="form-control">
+        <input type="number" aria-label="Maximum price" class="form-control">
+    </div>
+    <br>
+    <input type="range" min="1" max="5" style="width:25%">
+
+    <input asp-action="AllBooks" type="submit" value="search" />
+
+
 </form>
+
 
 <div class="rowbookcart">
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.Books)
     {
         <div class="childrow2froShopingCart">
             <a class="childrow1a" asp-controller="Books" asp-action="GetBooks" asp-route-Id="@item.Id">
@@ -49,8 +65,8 @@
     }
 </div>
 
-@for (int i = 0; i < Model.Count(); i++)
+@for (int i = 0; i < Model.Books.Count(); i++)
 {
-<a asp-action="AllBooks"  asp-route-count="@i" class="paginationsm">@i</a>
+    <a asp-action="AllBooks" asp-route-count="@i" class="paginationsm">@i</a>
 
 }

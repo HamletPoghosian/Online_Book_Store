@@ -239,28 +239,61 @@ namespace Online_Book_Store.BookStore.Controllers
         }
 
 
-       
-        public async Task<IActionResult> AllBooks(int count=0)
+       [HttpPost]
+        public async Task<IActionResult> AllBooks(ViewSearch model)
         {
 
-            var book =await  _context.Books.Include(b => b.Category).ToListAsync();
+            IEnumerable<Book> book =  _context.Books.Include(b => b.Category);
+            if(!string.IsNullOrEmpty(model.Name))
+            {
+                book = book.Where(b => b.Name == model.Name);
+            }
+            if (!string.IsNullOrEmpty(model.Name))
+            {
+                book = book.Where(b => b.Name == model.Name);
+            }
+            
 
-               
 
             if (book == null)
             {
                 return NotFound();
             }
+            model.Books=book.Select(b => new ViewBook
+            {
+                Id = b.Id,
+                Author = b.Author,
+                Name = b.Name,
+                CategoryName = b.CategoryName,
+                Popular = b.Popular,
+                Price = b.Price,
+                Publish = b.Publish
+            });
+            return View(model);
+        }
 
-            return View(book.Select(b=>new ViewBook {
-                Id=b.Id,
-                Author=b.Author,
-                Name=b.Name,
-                CategoryName=b.Category.Name,
-                Popular=b.Popular,
-                Price=b.Price,
-                Publish=b.Publish
-            }).Skip(count*10).Take(10));
+        public async Task<IActionResult> AllBooks(int count = 0)
+        {
+            ViewSearch view = new ViewSearch();
+            var book = await _context.Books.Include(b => b.Category).ToListAsync();
+
+
+
+            if (book == null)
+            {
+                return NotFound();
+            }
+            view.Books= book.Select(b => new ViewBook
+            {
+                Id = b.Id,
+                Author = b.Author,
+                Name = b.Name,
+                CategoryName = b.Category.Name,
+                Popular = b.Popular,
+                Price = b.Price,
+                Publish = b.Publish
+            }).Skip(count * 10).Take(10);
+            return View(view);
         }
     }
 }
