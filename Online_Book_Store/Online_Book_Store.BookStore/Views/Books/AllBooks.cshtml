@@ -13,19 +13,19 @@
 
      <input asp-for="Name" type="text"  />
     <br>
-     <input type="text" />
+     <input asp-for="Author" type="text" />
     <br>
-    <input type="date" />
+    <input asp-for="Publish" type="date" />
     <br>
     <div class="input-group">
         <div class="input-group-prepend">
             <span class="input-group-text">Minimum and Maximum price</span>
         </div>
-        <input type="number" aria-label="Minimum price" class="form-control">
-        <input type="number" aria-label="Maximum price" class="form-control">
+        <input asp-for="MinPrice" type="number" aria-label="Minimum price" class="form-control">
+        <input asp-for="MaxPrice" type="number" aria-label="Maximum price" class="form-control">
     </div>
     <br>
-    <input type="range" min="1" max="5" style="width:25%">
+    <input asp-for="Popular" type="range" min="1" max="5" style="width:25%">
 
     <input asp-action="AllBooks" type="submit" value="search" />
 
