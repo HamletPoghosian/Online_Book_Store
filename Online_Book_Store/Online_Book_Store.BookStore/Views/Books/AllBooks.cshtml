@@ -7,27 +7,34 @@
 
 <h2>Books</h2>
 
-
+<p class="showbookAmount">
+    Filtr By
+</p>
 <form method="post">
-   
 
-     <input asp-for="Name" type="text"  />
-    <br>
-     <input asp-for="Author" type="text" />
-    <br>
-    <input asp-for="Publish" type="date" />
-    <br>
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text">Minimum and Maximum price</span>
-        </div>
+    <p class="showbookFilter">
+        <input asp-for="Name" type="text" />
+    </p>
+    <p class="showbookFilter">
+        <input asp-for="Author" type="text" />
+    </p>
+    <p class="showbookFilter">
+        <input asp-for="Publish" type="date" />
+    </p>
+    <p class="showbookFilter">
         <input asp-for="MinPrice" type="number" aria-label="Minimum price" class="form-control">
+    </p>
+    <p class="showbookFilter">
         <input asp-for="MaxPrice" type="number" aria-label="Maximum price" class="form-control">
-    </div>
-    <br>
-    <input asp-for="Popular" type="range" min="1" max="5" style="width:25%">
+    </p>
+    <p class="showbookFilter">
+        <input asp-for="Popular" type="range" min="1" max="5" style="width:25%">
+    </p>
+    <p class="showbookFilter">
+        <input asp-action="AllBooks" type="submit" value="search" />
+    </p>
 
-    <input asp-action="AllBooks" type="submit" value="search" />
+
 
 
 </form>

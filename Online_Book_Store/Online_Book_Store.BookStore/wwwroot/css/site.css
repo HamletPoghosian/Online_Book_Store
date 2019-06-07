@@ -515,7 +515,21 @@ padding:5%;
         margin: 4px 2px;
         cursor: pointer;
     }
-
+.showbookFilter {
+    background-color: #fceccf;
+    border: none;
+    color: black;
+    width: 50%;
+    text-align: center;
+    outline: solid;
+    outline-color: goldenrod;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
 .prowPrice {
     width: max-content;
     background-color: goldenrod;
