@@ -82,22 +82,22 @@ namespace Online_Book_Store.BookStore
         }
         public async Task AddBook(ApplicationDbContext context)
         {
-
+            Random rd = new Random();
             for (int i = 0; i < 15; i++)
             {
                 await context.Books.AddAsync(
                     new Book
                     {
                         Id = new Guid(),
-                        Author = "Author "+i,
-                        Name = "Book "+i,
-                        Popular = 3,
-                        Price = 5000+(i*100),
+                        Author = "Author " + rd.Next(10,100),
+                        Name = "Book " + rd.Next(10, 100),
+                        Popular = rd.Next(1, 6),
+                        Price = rd.Next(1000,50000),
                         Publish = DateTime.Now,
                         Category = new Category
                         {
                             Id = new Guid(),
-                            Name = "History "+i,
+                            Name = "History "+rd.Next(80,900),
                             Discription = "In our History Books section you'll find used books on local history and histories of international events, histories by epoch and histories by continent. Whether history is a passionate interest, or your field of study, our low prices will open up any field to you whether you're interested in the last decade of the last millennium. When you ship history books at you read more and spend less."
 
                         },
