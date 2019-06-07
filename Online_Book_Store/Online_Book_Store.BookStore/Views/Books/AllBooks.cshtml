@@ -11,32 +11,50 @@
     Filtr By
 </p>
 <form method="post">
+   
+    <dl class="showbookAmount">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            <input class="showbookFilter" asp-for="Name" type="text" />
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+        <dd>
+            <input class="showbookFilter" asp-for="Author" type="text" />
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Publish)
+        </dt>
+        <dd>
+            <input class="showbookFilter" asp-for="Publish" type="date" />
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MinPrice)
+        </dt>
+        <dd>
+            <input class="showbookFilter" asp-for="MinPrice" type="number" >
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxPrice)
+        </dt>
+        <dd>
+            <input class="showbookFilter" asp-for="MaxPrice" type="number" >
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Popular)
+        </dt>
+        <dd>
+            <input class="showbookFilter" asp-for="Popular" type="range" min="1" max="5" >
+        </dd>
+        
+    </dl>
+    
 
-    <p class="showbookFilter">
-        <input asp-for="Name" type="text" />
-    </p>
-    <p class="showbookFilter">
-        <input asp-for="Author" type="text" />
-    </p>
-    <p class="showbookFilter">
-        <input asp-for="Publish" type="date" />
-    </p>
-    <p class="showbookFilter">
-        <input asp-for="MinPrice" type="number" aria-label="Minimum price" class="form-control">
-    </p>
-    <p class="showbookFilter">
-        <input asp-for="MaxPrice" type="number" aria-label="Maximum price" class="form-control">
-    </p>
-    <p class="showbookFilter">
-        <input asp-for="Popular" type="range" min="1" max="5" style="width:25%">
-    </p>
-    <p class="showbookFilter">
-        <input asp-action="AllBooks" type="submit" value="search" />
-    </p>
 
-
-
-
+    <input type="submit"  value="Filter" />
 </form>
 
 
