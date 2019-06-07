@@ -69,25 +69,24 @@ a {
 
 .childrow1:hover {
     background-color: #fceccf;
-    transition: 0.5s;
+    transition:0.5s;
     outline: 2px solid #eaaf1b;
+   
     text-decoration: none;
 }
-
 .childrow2froShopingCart {
     justify-content: center;
-    position: relative;
+    position:relative;
     width: 49%;
     height: 300px;
-    display: inline-block;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    display:inline-block;
+    margin-top: 30px;    
+    margin-bottom: 30px; 
     text-align: center;
     font-size: 4px;
     background-color: #ffffff;
     outline: 1px solid #bdbbbb;
 }
-
 .childrow2froCategories {
     justify-content: center;
     position: relative;
@@ -103,7 +102,6 @@ a {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
 .childrow2froFiltr {
     justify-content: center;
     position: relative;
@@ -117,29 +115,28 @@ a {
     background-color: #f8f8f0;
     outline: 1px solid #bdbbbb;
 }
-
 .childrow2froCategories:hover {
-    background-color: #ffdfb0;
-}
+background-color:#ffdfb0;
 
-.childrow2froShopingCart:hover {
+}
+.childrow2froShopingCart:hover
+{
     background-color: #fcead0;
 }
-
-.categorybodydiv {
-    background-color: #ffffff;
+    .categorybodydiv {
+    background-color:#ffffff;
+   
     padding-left: 25%;
     padding-right: 25%;
 }
-
 .prowCategories {
     font-family: 'Dosis', sans-serif;
     color: black;
     line-height: normal;
     text-align: unset;
     font-size: 25px;
+   
 }
-
 .prow {
     font-family: Arial;
     color: black;
@@ -147,7 +144,6 @@ a {
     text-align: unset;
     font-size: 20px;
 }
-
 .prowCategory {
     font-family: 'Julius Sans One', sans-serif;
     color: black;
@@ -164,7 +160,6 @@ a {
     text-align: unset;
     font-size: 30px;
 }
-
 .pupliarBook .popH {
     font-size: 30px;
     color: black;
@@ -231,26 +226,26 @@ a {
 
 .sectionimage {
     display: flex;
-    width: 100%;
+    width: 100%;    
     height: 100%;
+    
 }
-
     .sectionimage:hover {
-        background-color: #3e3d3d;
-        opacity: 0.7;
-        transition: 0.5s;
+    background-color:#3e3d3d;
+    opacity:0.7;
+    transition:0.5s;
     }
 
-.section1 {
-    display: flex;
-}
+    .section1 {
+        display: flex;
+    }
 
 .sectionA {
     width: calc(50% - 0px);
     text-decoration: none;
     font-size: 25px;
     outline: 3px solid azure;
-    color: dimgray;
+    color:dimgray;
     background-color: #e5e5e5;
 }
 
@@ -266,6 +261,7 @@ a {
 .sectionA:hover {
     text-decoration: none;
     background-color: #ffe3b0;
+    
 }
 
 a:hover {
@@ -300,9 +296,8 @@ a:hover {
     margin-left: auto;
     margin-right: auto;
 }
-
 .readbookCategoyicon {
-    padding: 10px;
+    padding:10px;
     width: 80px;
     height: auto;
     border-radius: 50%;
@@ -310,7 +305,6 @@ a:hover {
     margin-left: auto;
     margin-right: auto;
 }
-
 .imagecicelP {
     text-align: center;
     font-size: 20px;
@@ -329,7 +323,7 @@ a:hover {
 }
 
 .star {
-    text-align: end;
+    text-align:end;
     font-size: 200%;
     color: goldenrod;
 }
@@ -352,11 +346,9 @@ a:hover {
     width: 90%;
     height: auto;
 }
-
 .lowertime {
-    padding: 5%;
+padding:5%;
 }
-
 .bookshowvalue {
     margin-left: 50px;
 }
@@ -370,15 +362,12 @@ a:hover {
 .bookautor {
     font-size: 25px;
 }
-
 .bookCategory {
     font-size: 25px;
 }
-
 .bookPublish {
     font-size: 25px;
 }
-
 .bookdate {
     font-size: 15px;
 }
@@ -402,15 +391,15 @@ a:hover {
     color: goldenrod;
     font-size: 40px;
 }
-
 .twoBook {
     display: flex;
     justify-content: space-around;
     width: 100%;
     height: 700px;
     margin: 1px;
+    
+    
 }
-
 .twoBookone {
     border: 1px solid #a5a0a0;
     justify-content: center;
@@ -418,14 +407,16 @@ a:hover {
     height: 99%;
     margin: 5px;
     text-align: center;
-    font-size: 30px;
+    font-size: 30px; 
+   
+    
 }
 
 .showbookAmount {
     background-color: #fceccf;
     border: none;
     color: black;
-    width: 50%;
+    width:50%;
     text-align: center;
     outline: solid;
     outline-color: goldenrod;
@@ -436,7 +427,6 @@ a:hover {
     cursor: pointer;
     margin-bottom: 8px;
 }
-
 .showbookbutton {
     background-color: #555555;
     border: none;
@@ -452,11 +442,10 @@ a:hover {
     cursor: pointer;
     margin-bottom: 8px;
 }
-
 .paginationsm {
     background-color: #555555;
     border: none;
-    color: white;
+    color: white;  
     outline: solid;
     outline-color: #555555;
     text-align: center;
@@ -467,7 +456,6 @@ a:hover {
     cursor: pointer;
     margin-bottom: 8px;
 }
-
     .paginationsm:hover {
         background-color: goldenrod;
         border: none;
@@ -482,7 +470,6 @@ a:hover {
         cursor: pointer;
         margin-bottom: 8px;
     }
-
 .showbookbutton:hover {
     background-color: goldenrod;
     border: none;
@@ -528,19 +515,21 @@ a:hover {
         margin: 4px 2px;
         cursor: pointer;
     }
-
 .showbookFilter {
+    
     border: none;
     color: black;
-    width: 50%;
-    text-decoration:solid;
-    text-align: left;    
+    width:auto;
+    text-align: left;
+    outline: solid;
+    outline-color: goldenrod;
+    text-decoration: none;
     display: inline-block;
     font-size: 20px;
     margin: 4px 2px;
     cursor: pointer;
+    margin-bottom: 8px;
 }
-
 .prowPrice {
     width: max-content;
     background-color: goldenrod;
@@ -549,10 +538,9 @@ a:hover {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: black;
 }
-
 .prowPriceTotal {
-    display: flex;
-    position: absolute;
+    display:flex;
+    position:absolute;
     width: max-content;
     background-color: goldenrod;
     margin-left: auto;
@@ -560,12 +548,11 @@ a:hover {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: black;
 }
-
-.Shopingcart {
-    width: 30px;
-    height: 30px;
-    display: flex;
-}
+    .Shopingcart {
+        width: 30px;
+        height: 30px;
+        display: flex;
+    }
 
 
 .Insert-Page-Image-book img {
@@ -584,32 +571,31 @@ a:hover {
 }
 
 .navbar-inverse {
+
     background-color: black;
     font-size: 20px;
 }
-
 ::selection {
     background: #8e8e8e;
 }
-
 .navbar-brand {
     font-size: 35px;
     font-family: 'Dancing Script', cursive;
 }
-
 .navbar-inverse .navbar-nav > li > a:hover {
     background-color: #13140e;
 }
 
-.navbar-inverse .navbar-brand {
-    color: aliceblue;
-}
-
-    .navbar-inverse .navbar-brand:hover {
-        background-color: black;
-        font-family: 'Dancing Script', cursive;
-        font-size: 35px;
+    .navbar-inverse .navbar-brand {
+        color: aliceblue;
+       
     }
+
+        .navbar-inverse .navbar-brand:hover {
+            background-color: black;
+            font-family: 'Dancing Script', cursive;
+            font-size: 35px;
+        }
 
 Button:hover {
     color: #336600;

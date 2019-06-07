@@ -11,48 +11,47 @@
     Filtr By
 </p>
 <form method="post">
-   
-    <dl class="showbookAmount">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            <input class="showbookFilter" asp-for="Name" type="text" />
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-        <dd>
-            <input class="showbookFilter" asp-for="Author" type="text" />
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Publish)
-        </dt>
-        <dd>
-            <input class="showbookFilter" asp-for="Publish" type="date" />
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.MinPrice)
-        </dt>
-        <dd>
-            <input class="showbookFilter" asp-for="MinPrice" type="number" >
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.MaxPrice)
-        </dt>
-        <dd>
-            <input class="showbookFilter" asp-for="MaxPrice" type="number" >
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Popular)
-        </dt>
-        <dd>
-            <input class="showbookFilter" asp-for="Popular" type="range" min="1" max="5"  >
-            <input class="showbookbutton1" type="submit"  value="Search" />
-        </dd>
-        
-    </dl>
-    
+
+    <div>
+        @Html.DisplayNameFor(model => model.Name)
+        <input class="showbookFilter" asp-for="Name" type="text" placeholder="Book Name" />
+    </div>
+    <div>
+        @Html.DisplayNameFor(model => model.Author)
+        <input class="showbookFilter" asp-for="Author" type="text" placeholder="Author" />
+    </div>
+    <div>
+        @Html.DisplayNameFor(model => model.Publish)
+        <input class="showbookFilter" asp-for="Publish" type="date" />
+    </div>
+    <div>
+        @Html.DisplayNameFor(model => model.MinPrice)
+        <input class="showbookFilter" asp-for="MinPrice" type="number" min="0" style="font-size:15px">
+    </div>
+    <div>
+        @Html.DisplayNameFor(model => model.MaxPrice)
+        <input class="showbookFilter" asp-for="MaxPrice" type="number" min="0">
+    </div>
+    <div>
+        @Html.DisplayNameFor(model => model.Popular)
+        <input class="showbookFilter" asp-for="Popular" type="range" min="1" max="5" style="width:25%">
+    </div>
+    <div>
+    <input asp-action="AllBooks" class="showbookbutton1" type="submit" value="Search" />
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </form>
