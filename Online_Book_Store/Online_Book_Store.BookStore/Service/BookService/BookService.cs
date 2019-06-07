@@ -11,16 +11,15 @@ using System.Threading.Tasks;
 namespace Book_Store.Service
 {
     public class BookService : IBookService
-    {
-        
+    {           
         ApplicationDbContext _context;
         public BookService(ApplicationDbContext context)
         {
             _context = context;
         }
+
         public async Task<Book> AddItemsAsync(Book book)
-        {
-            
+        {            
             var entity = new Book
             {
                 Id = book.Id,
@@ -52,7 +51,6 @@ namespace Book_Store.Service
             entity.Popular = bookItems.Popular;
             entity.Price = bookItems.Price;
             entity.Author = bookItems.Author;
-
             _context.Books.Update(entity);
             await _context.SaveChangesAsync();
 
@@ -70,11 +68,9 @@ namespace Book_Store.Service
                 Price = entity.Price,
                 CategoryName = entity.Category.Name
             };
-
         }
 
         public async Task<IEnumerable<Book>> GetBooksAsync()
-
         {
             var query = _context.Books.Include(b => b.Category).AsQueryable();
             var entity = await query.ToListAsync();
@@ -87,8 +83,6 @@ namespace Book_Store.Service
                 Price = p.Price,
                 Category= p.Category
             });
-
         }
-
     }
 }

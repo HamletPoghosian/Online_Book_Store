@@ -86,7 +86,6 @@ namespace Online_Book_Store.BookStore.Service.Category
         public IEnumerable<Data.Category> GetCategory()
         {
             var query = _context.Categorys;
-
             return query;
         }
 
