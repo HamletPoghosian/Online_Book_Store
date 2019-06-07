@@ -31,27 +31,12 @@
         Maximum Price
     </div>
     <div>
-        <input class="showbookFilter" asp-for="Popular" type="range" min="1" max="5" style="width:25% ">
         Popularity
+        <input class="showbookFilter" asp-for="Popular" type="range" min="1" max="5" style="width:25% ">
     </div>
     <div>
     <input asp-action="AllBooks" class="showbookbutton1" type="submit" value="Search" /> 
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </form>
 
 
@@ -90,5 +75,4 @@
 @for (int i = 0; i < Model.Books.Count(); i++)
 {
     <a asp-action="AllBooks" asp-route-count="@i" class="paginationsm">@i</a>
-
 }
