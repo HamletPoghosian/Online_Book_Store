@@ -521,7 +521,7 @@ padding:5%;
     color: black;
     width:auto;
     text-align: left;
-    outline: solid;
+    outline: auto;
     outline-color: goldenrod;
     text-decoration: none;
     display: inline-block;
