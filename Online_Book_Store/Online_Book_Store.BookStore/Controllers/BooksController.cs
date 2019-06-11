@@ -256,10 +256,6 @@ namespace Online_Book_Store.BookStore.Controllers
             {
                 book = book.Where(b => b.Author == model.Author);
             }
-            if ((model.MaxPrice != 0) && (model.MinPrice != 0))
-            {
-                book = book.Where(b => b.Price >= model.MinPrice && b.Price <= model.MaxPrice);
-            }
             if (model.Publish != null)
             {
                 book = book.Where(b => b.Publish == model.Publish);
@@ -267,6 +263,10 @@ namespace Online_Book_Store.BookStore.Controllers
             if (model.Popular != 0)
             {
                 book = book.Where(b => b.Popular == model.Popular);
+            }
+            if ((model.MaxPrice != 0) && (model.MinPrice != 0))
+            {
+                book = book.Where(b => b.Price >= model.MinPrice && b.Price <= model.MaxPrice);
             }
 
             if (book == null)

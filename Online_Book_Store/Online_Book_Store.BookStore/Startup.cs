@@ -63,7 +63,7 @@ namespace Online_Book_Store.BookStore
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Books/Index");
                 app.UseHsts();
             }
 

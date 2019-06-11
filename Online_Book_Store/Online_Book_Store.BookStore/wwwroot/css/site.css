@@ -539,9 +539,14 @@ padding:5%;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: black;
 }
+.prowimg {
+    text-align:center;
+width:40%;
+height:auto;
+}
 .prowPriceTotal {
-    display:flex;
-    position:absolute;
+    display: flex;
+    position: absolute;
     width: max-content;
     background-color: goldenrod;
     margin-left: auto;
