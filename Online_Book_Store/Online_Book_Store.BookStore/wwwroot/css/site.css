@@ -606,9 +606,9 @@ a:hover {
     font-family: 'Dancing Script', cursive;
 }
 
-    .navbar-brand:hover {
-        color: #f9d24b;
-    }
+.navbar-inverse .navbar-brand:hover {
+    color: #f9d24b;
+}
 
 .navbar-inverse .navbar-nav > li > a:hover {
     background-color: #13140e;
