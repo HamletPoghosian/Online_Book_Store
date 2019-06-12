@@ -29,11 +29,8 @@ namespace Online_Book_Store.BookStore.Controllers
 
         // GET: Books
         public async Task<IActionResult> Index()
-        {
-           
-            var entity = await _addBook.GetBooksAsync();
-            
-           
+        {           
+            var entity = await _addBook.GetBooksAsync();                       
             return View(entity.Select(book=>new ViewBook
             {
                 Id=book.Id,
@@ -43,7 +40,6 @@ namespace Online_Book_Store.BookStore.Controllers
                 Popular=book.Popular,
                 Price=book.Price,
                 Publish=book.Publish
-
             }));
         }
 
@@ -54,10 +50,10 @@ namespace Online_Book_Store.BookStore.Controllers
             {
                 return NotFound();
             }
+
             var entity = await _addBook.GetBookAsync(id.Value);
 
-            await _addBook.EditAsync(entity);
-                
+            await _addBook.EditAsync(entity);              
            
             if (entity == null)
             {
@@ -68,7 +64,6 @@ namespace Online_Book_Store.BookStore.Controllers
         }
         public async Task<IActionResult> GetBooks(Guid? id)
         {
-
             if (id == null)
             {
                 return NotFound();
@@ -93,6 +88,7 @@ namespace Online_Book_Store.BookStore.Controllers
 
             return View(viewBook);
         }
+
         [Authorize(Roles = "Admin")]
         // GET: Books/Create
         public  IActionResult Create()

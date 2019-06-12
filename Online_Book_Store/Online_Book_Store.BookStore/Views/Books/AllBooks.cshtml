@@ -66,14 +66,11 @@
                         }
                     }
                 </p>
-                <p class="prow">
-                    @Html.DisplayFor(modelItem => item.CategoryName)
-                </p>
+               
             </a>
         </div>
     }
 </div>
-
 @for (int i = 0; i < Model.Books.Count(); i++)
 {
     <a asp-action="AllBooks" asp-route-count="@i" class="paginationsm">@i</a>
