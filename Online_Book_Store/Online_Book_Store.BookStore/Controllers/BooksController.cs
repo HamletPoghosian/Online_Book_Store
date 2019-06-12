@@ -237,7 +237,7 @@ namespace Online_Book_Store.BookStore.Controllers
 
 
         [HttpPost]
-        public  IActionResult AllBooks(ViewSearch model)
+        public IActionResult AllBooks(ViewSearch model)
         {
 
             IEnumerable<Book> book = _context.Books.Include(b => b.Category)
@@ -247,7 +247,7 @@ namespace Online_Book_Store.BookStore.Controllers
             {
                 book = book.Where(b => b.Author == model.Author);
 
-                if (model.Popular>0)
+                if (model.Popular > 0)
                 {
                     book = book.Where(b => b.Popular >= model.Popular);
                     if (model.Publish != null)
@@ -259,18 +259,7 @@ namespace Online_Book_Store.BookStore.Controllers
                         }
                     }
                 }
-            }
-             
-            if (model!=null)
-            {
-                book = book;
-            }
-
-            if (book == null)
-            {
-                return NotFound();
-            }
-
+            }           
             model.Books = book.Select(b => new ViewBook
             {
                 Id = b.Id,
