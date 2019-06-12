@@ -19,19 +19,30 @@
         <input class="showbookFilter" asp-for="Author" type="text" placeholder="Author" />
     </div>
     <div>
+        <p class="filter">
+            Publish Date
+        </p> 
         <input class="showbookFilter" asp-for="Publish" type="date" />
-        Publish Date
     </div>
     <div>
+        <p class="filter">
+            Minimum Price
+        </p>
         <input class="showbookFilter" asp-for="MinPrice" type="number" min="0" style="font-size:15px ">
-        Minimum Price
+       
     </div>
     <div>
+        <p class="filter">
+            Maximum Price
+        </p>
         <input class="showbookFilter" asp-for="MaxPrice" type="number" min="0" style="font-size:15px">
-        Maximum Price
+       
     </div>
     <div>
-        Popularity
+        <p class="filter">
+            Popularity
+        </p>
+        
         <input class="showbookFilter" asp-for="Popular" type="range" min="1" max="5" style="width:25% ">
     </div>
     <div>

@@ -576,7 +576,11 @@ a:hover {
     display: flex;
 }
 
-
+.filter {
+    font-size: 20px;
+    font-family: "TheMix_500",Helvetica,Arial,sans-serif;
+    color: goldenrod;
+}
 .Insert-Page-Image-book img {
     display: flex;
 }
