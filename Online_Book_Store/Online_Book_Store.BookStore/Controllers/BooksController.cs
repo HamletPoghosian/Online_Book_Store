@@ -20,7 +20,7 @@ namespace Online_Book_Store.BookStore.Controllers
         private readonly IBookService _addBook;
         private readonly ICategoryService _addCategory;
 
-        public BooksController(ApplicationDbContext context,IBookService addbook,ICategoryService category)
+        public BooksController(ApplicationDbContext context, IBookService addbook, ICategoryService category)
         {
             _context = context;
             _addBook = addbook;
@@ -29,17 +29,17 @@ namespace Online_Book_Store.BookStore.Controllers
 
         // GET: Books
         public async Task<IActionResult> Index()
-        {           
-            var entity = await _addBook.GetBooksAsync();                       
-            return View(entity.Select(book=>new ViewBook
+        {
+            var entity = await _addBook.GetBooksAsync();
+            return View(entity.Select(book => new ViewBook
             {
-                Id=book.Id,
-                Name=book.Name,
-                Author=book.Author,
-                CategoryName=book.Category.Name,
-                Popular=book.Popular,
-                Price=book.Price,
-                Publish=book.Publish
+                Id = book.Id,
+                Name = book.Name,
+                Author = book.Author,
+                CategoryName = book.Category.Name,
+                Popular = book.Popular,
+                Price = book.Price,
+                Publish = book.Publish
             }));
         }
 
@@ -53,8 +53,8 @@ namespace Online_Book_Store.BookStore.Controllers
 
             var entity = await _addBook.GetBookAsync(id.Value);
 
-            await _addBook.EditAsync(entity);              
-           
+            await _addBook.EditAsync(entity);
+
             if (entity == null)
             {
                 return NotFound();
@@ -71,14 +71,15 @@ namespace Online_Book_Store.BookStore.Controllers
 
             var entity = await _addBook.GetBookAsync(id.Value);
 
-            var viewBook = new ViewBook {
-                Id=entity.Id,
-                Author=entity.Author,
-                Name=entity.Name,
-                Popular=entity.Popular,
-                Price=entity.Price,
-                CategoryName=entity.CategoryName,
-                Publish=entity.Publish
+            var viewBook = new ViewBook
+            {
+                Id = entity.Id,
+                Author = entity.Author,
+                Name = entity.Name,
+                Popular = entity.Popular,
+                Price = entity.Price,
+                CategoryName = entity.CategoryName,
+                Publish = entity.Publish
             };
 
             if (entity == null)
@@ -91,7 +92,7 @@ namespace Online_Book_Store.BookStore.Controllers
 
         [Authorize(Roles = "Admin")]
         // GET: Books/Create
-        public  IActionResult Create()
+        public IActionResult Create()
         {
             GetCategoryDropDown();
             return View();
@@ -220,7 +221,7 @@ namespace Online_Book_Store.BookStore.Controllers
         {
             return _context.Books.Any(e => e.Id == id);
         }
-         
+
         private void GetCategoryDropDown()
         {
             var categories = _addCategory.GetCategory().Select(category => new CategoryDropDown
@@ -236,40 +237,41 @@ namespace Online_Book_Store.BookStore.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> AllBooks(ViewSearch model)
+        public  IActionResult AllBooks(ViewSearch model)
         {
 
-            IEnumerable<Book> book = _context.Books.Include(b => b.Category);
-            if (!string.IsNullOrEmpty(model.Name))
-            {
-                book = book.Where(b => b.Name == model.Name);
-            }
-            if (!string.IsNullOrEmpty(model.Author))
-            {
-                book = book.Where(b => b.Name == model.Author);
-            }
-            if (!string.IsNullOrEmpty(model.Author))
+            IEnumerable<Book> book = _context.Books.Include(b => b.Category)
+                .Where(b => b.Name == model.Name);
+
+            if (!string.IsNullOrWhiteSpace(model.Author))
             {
                 book = book.Where(b => b.Author == model.Author);
+
+                if (model.Popular>0)
+                {
+                    book = book.Where(b => b.Popular >= model.Popular);
+                    if (model.Publish != null)
+                    {
+                        book = book.Where(b => b.Publish == model.Publish);
+                        if (model.MaxPrice >= model.MaxPrice)
+                        {
+                            book = book.Where(b => b.Price >= model.MinPrice && b.Price <= model.MaxPrice);
+                        }
+                    }
+                }
             }
-            if (model.Publish != null)
+             
+            if (model!=null)
             {
-                book = book.Where(b => b.Publish == model.Publish);
-            }
-            if (model.Popular != 0)
-            {
-                book = book.Where(b => b.Popular == model.Popular);
-            }
-            if ((model.MaxPrice != 0) && (model.MinPrice != 0))
-            {
-                book = book.Where(b => b.Price >= model.MinPrice && b.Price <= model.MaxPrice);
+                book = book;
             }
 
             if (book == null)
             {
                 return NotFound();
             }
-            model.Books=book.Select(b => new ViewBook
+
+            model.Books = book.Select(b => new ViewBook
             {
                 Id = b.Id,
                 Author = b.Author,
@@ -279,6 +281,7 @@ namespace Online_Book_Store.BookStore.Controllers
                 Price = b.Price,
                 Publish = b.Publish
             });
+
             return View(model);
         }
 
@@ -293,7 +296,7 @@ namespace Online_Book_Store.BookStore.Controllers
             {
                 return NotFound();
             }
-            view.Books= book.Select(b => new ViewBook
+            view.Books = book.Select(b => new ViewBook
             {
                 Id = b.Id,
                 Author = b.Author,
