@@ -235,7 +235,6 @@ namespace Online_Book_Store.BookStore.Controllers
             ViewData["CategoryName"] = new SelectList(categories, "Id", "Name");
         }
 
-
         [HttpPost]
         public IActionResult AllBooks(ViewSearch model)
         {
@@ -259,7 +258,8 @@ namespace Online_Book_Store.BookStore.Controllers
                         }
                     }
                 }
-            }           
+            }   
+            
             model.Books = book.Select(b => new ViewBook
             {
                 Id = b.Id,
@@ -278,9 +278,7 @@ namespace Online_Book_Store.BookStore.Controllers
         {
             ViewSearch view = new ViewSearch();
             var book = await _context.Books.Include(b => b.Category).ToListAsync();
-
-
-
+                       
             if (book == null)
             {
                 return NotFound();

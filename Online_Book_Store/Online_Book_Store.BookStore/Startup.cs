@@ -66,7 +66,6 @@ namespace Online_Book_Store.BookStore
                 app.UseExceptionHandler("/Books/Index");
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

@@ -11,7 +11,5 @@ namespace Online_Book_Store.BookStore.Models
         public ViewBook Book { get; set; }
         public int Amount { get; set; }
         public double TotalPrice { get; set; }
-
-
     }
 }
