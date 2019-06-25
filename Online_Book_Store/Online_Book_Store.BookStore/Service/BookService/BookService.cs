@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Book_Store.Service
 {
     public class BookService : IBookService
-    {           
+    {
         ApplicationDbContext _context;
         public BookService(ApplicationDbContext context)
         {
@@ -19,7 +19,7 @@ namespace Book_Store.Service
         }
 
         public async Task<Book> AddItemsAsync(Book book)
-        {            
+        {
             var entity = new Book
             {
                 Id = book.Id,
@@ -40,7 +40,6 @@ namespace Book_Store.Service
             var entity = await _context.Books.SingleOrDefaultAsync(e => e.Id == bookItems.Id);
             _context.Books.Remove(entity);
             await _context.SaveChangesAsync();
-
         }
 
         public async Task EditAsync(Book bookItems)
@@ -53,7 +52,6 @@ namespace Book_Store.Service
             entity.Author = bookItems.Author;
             _context.Books.Update(entity);
             await _context.SaveChangesAsync();
-
         }
 
         public async Task<Book> GetBookAsync(Guid bookId)
@@ -81,7 +79,7 @@ namespace Book_Store.Service
                 Name = p.Name,
                 Popular = p.Popular,
                 Price = p.Price,
-                Category= p.Category
+                Category = p.Category
             });
         }
     }
