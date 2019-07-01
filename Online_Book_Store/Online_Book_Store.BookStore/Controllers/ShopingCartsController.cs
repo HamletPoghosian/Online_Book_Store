@@ -31,24 +31,25 @@ namespace Online_Book_Store.BookStore.Controllers
         {
             var user = await GetCurrentUser();
 
-            var shopincCartitems = await _context.ShopingCarts.Include(e=>e.Book).ThenInclude(book => book.Category).Where(u=>u.ApplicationUserId.ToString()==user.Id).ToListAsync();
+            var shopincCartitems = await _context.ShopingCarts.Include(e => e.Book).ThenInclude(book => book.Category).Where(u => u.ApplicationUserId.ToString() == user.Id).ToListAsync();
 
-             
-            return View(shopincCartitems.Select(e=>new ShopingCartModel {
-                Id=e.Id,               
-                Amount=e.Amount,   
-                TotalPrice=e.Amount*e.Book.Price,
-                Book=new ViewBook
+
+            return View(shopincCartitems.Select(e => new ShopingCartModel
+            {
+                Id = e.Id,
+                Amount = e.Amount,
+                TotalPrice = e.Amount * e.Book.Price,
+                Book = new ViewBook
                 {
-                    Id=e.Book.Id,
-                    Name=e.Book.Name,
-                    Author=e.Book.Author,
-                    Popular=e.Book.Popular,
-                    Price=e.Book.Price,
-                    Publish=e.Book.Publish,
-                    CategoryName=e.Book.Category.Name
+                    Id = e.Book.Id,
+                    Name = e.Book.Name,
+                    Author = e.Book.Author,
+                    Popular = e.Book.Popular,
+                    Price = e.Book.Price,
+                    Publish = e.Book.Publish,
+                    CategoryName = e.Book.Category.Name
                 }
-                
+
             }));
         }
         [Authorize(Roles = "Admin")]
@@ -81,7 +82,7 @@ namespace Online_Book_Store.BookStore.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 
         [Authorize(Roles = "Admin")]
-       
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,ApplicationUserId,Amount")] ShopingCart shopingCart)
@@ -148,7 +149,7 @@ namespace Online_Book_Store.BookStore.Controllers
             }
             return View(shopingCart);
         }
-        
+
         // GET: ShopingCarts/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
         {
@@ -174,7 +175,7 @@ namespace Online_Book_Store.BookStore.Controllers
         }
 
         // POST: ShopingCarts/Delete/5
-   
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
@@ -194,30 +195,32 @@ namespace Online_Book_Store.BookStore.Controllers
         [Authorize]
         public async Task<IActionResult> AddToCart(ViewBook book)
         {
-          
-        ShopingCart shopingCart = new ShopingCart();
+
+            ShopingCart shopingCart = new ShopingCart();
             if (book.Id == null)
             {
-                return RedirectToAction("GetBooks","Books");
+                return RedirectToAction("GetBooks", "Books");
             }
             if (ModelState.IsValid)
             {
-                var user = await GetCurrentUser();              
-                var a =await _context.ShopingCarts.Where(e => e.BookId == book.Id && e.ApplicationUserId.ToString()== user.Id).SingleOrDefaultAsync();
+                var user = await GetCurrentUser();
+                var a = await _context.ShopingCarts.Where(e => e.BookId == book.Id && e.ApplicationUserId.ToString() == user.Id).SingleOrDefaultAsync();
                 if (a == null)
                 {
                     shopingCart.Id = Guid.NewGuid();
                     shopingCart.ApplicationUserId = Guid.Parse(user.Id);
                     shopingCart.BookId = book.Id;
                     shopingCart.Amount = book.Amount;
-                    _context.Add(shopingCart);                  
+                    _context.Add(shopingCart);
                 }
                 else
                 {
                     a.Amount += book.Amount;
                     _context.ShopingCarts.Update(a);
                 }
-                  await _context.SaveChangesAsync();
+
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
 
@@ -225,26 +228,27 @@ namespace Online_Book_Store.BookStore.Controllers
             return View();
         }
         [HttpGet]
-        public  IActionResult AddToCart()
+        public IActionResult AddToCart()
         {
-                return RedirectToAction("Index", "Books");         
-
+            return RedirectToAction("Index", "Books");
         }
-        public  IActionResult Buy(string  Id)
+        public IActionResult Buy(string Id)
         {
             var entyty = new ShopingCart
             {
-                Id=Guid.Parse(Id),                
+                Id = Guid.Parse(Id),
             };
             _context.ShopingCarts.Remove(entyty);
-             _context.SaveChanges();
-            return  View();
+
+            _context.SaveChanges();
+
+            return View();
         }
         private async Task<ApplicationUser> GetCurrentUser()
         {
             return await _manager.GetUserAsync(HttpContext.User);
         }
-       
+
 
     }
 }

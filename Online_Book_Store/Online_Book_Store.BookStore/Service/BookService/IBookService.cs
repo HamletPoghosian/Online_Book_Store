@@ -10,9 +10,14 @@ namespace BookStoreOnline.Service
     public interface IBookService
     {
         Task<Book> AddItemsAsync(Book book);
+
         Task EditAsync(Book book);
+
         Task DeleteAsync(Book bookItems);
+
         Task<Book> GetBookAsync(Guid bookId);
+
         Task<IEnumerable<Book>> GetBooksAsync();
+
     }
 }

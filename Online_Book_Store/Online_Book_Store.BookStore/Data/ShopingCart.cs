@@ -16,5 +16,6 @@ namespace Online_Book_Store.BookStore.Data
         public Book Book { get; set; }
 
         public int Amount { get; set; }
+
     }
 }
