@@ -86,6 +86,7 @@ namespace Online_Book_Store.BookStore.Controllers
                 return NotFound();
             }
             return View(category);
+
         }
 
         // POST: Categories/Edit/5
@@ -119,8 +120,10 @@ namespace Online_Book_Store.BookStore.Controllers
                         throw;
                     }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(category);
         }
         [Authorize(Roles = "Admin")]

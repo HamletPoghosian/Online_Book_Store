@@ -169,6 +169,7 @@ namespace Online_Book_Store.BookStore.Controllers
             shopingCart.Book.Author = book.Author;
             shopingCart.Book.Price = book.Price;
             shopingCart.Book.Author = book.Author;
+
             return View(shopingCart);
         }
 
