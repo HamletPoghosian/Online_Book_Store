@@ -293,6 +293,7 @@ namespace Online_Book_Store.BookStore.Controllers
                 Price = b.Price,
                 Publish = b.Publish
             }).Skip(count * 10).Take(10);
+
             return View(view);
         }
     }

@@ -65,8 +65,10 @@ namespace Online_Book_Store.BookStore.Controllers
                 category.Id = Guid.NewGuid();
                 _context.Add(category);
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(category);
         }
         [Authorize(Roles = "Admin")]
