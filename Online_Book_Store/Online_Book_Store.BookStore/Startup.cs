@@ -98,8 +98,8 @@ namespace Online_Book_Store.BookStore
                     new Book
                     {
                         Id = new Guid(),
-                        Author = "Author " + rd.Next(10,100),
-                        Name = "Book " + rd.Next(10, 100),
+                        Author = "Author Namber" + rd.Next(10,100),
+                        Name = "Book Number" + rd.Next(10, 100),
                         Popular = rd.Next(1, 6),
                         Price = rd.Next(1000,50000),
                         Publish = DateTime.Now,
