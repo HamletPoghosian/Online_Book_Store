@@ -1,4 +1,5 @@
 # Online Book Store
+![coffeemachin](http://www.gifgifachance.com/uploads/6/5/9/4/65943003/open-book-mockup-2_orig.gif)
 
 A responsive website that displays available books in the store, along with their details.Website provides options such as browsing books based on categories or authors, searching the required book, viewing full description page of any book. It is also possible to sort the listing based on price or discount. User can register and login on subsequent accesses, view his/her cart, buy desired books. In case of any problem user can ask query which is directly sent as a mail to admin.
 
